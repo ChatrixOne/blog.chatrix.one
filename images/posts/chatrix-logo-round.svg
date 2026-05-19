@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <clipPath id="rounded">
+      <rect width="1200" height="630" rx="80" ry="80"/>
+    </clipPath>
+  </defs>
+  <rect width="1200" height="630" rx="80" ry="80" fill="#0a0e14"/>
+  <g clip-path="url(#rounded)">
+    <!-- CX1 bubble logo centered -->
+    <g transform="translate(480, 140) scale(2)">
+      <path fill="#ffffff" d="M16 6 Q6 6 6 16 L6 84 Q6 94 16 94 L72 94 L88 114 L88 94 L104 94 Q114 94 114 84 L114 16 Q114 6 104 6 Z"/>
+      <text x="52" y="62" text-anchor="middle" font-size="40" font-weight="700" font-family="Arial Black,Arial,sans-serif" fill="#111111" letter-spacing="-1">CX</text>
+      <text x="83" y="34" font-size="24" font-weight="700" font-family="Arial Black,Arial,sans-serif" fill="#111111">1</text>
+    </g>
+    <!-- chatrix.one text below -->
+    <text x="600" y="470" text-anchor="middle" font-size="48" font-weight="700" font-family="Arial,sans-serif" fill="#e2e8f0" letter-spacing="-1">chatrix.one</text>
+    <text x="600" y="530" text-anchor="middle" font-size="24" font-family="Arial,sans-serif" fill="#4a5568">Keep the Chatting, Skip the Tracking!</text>
+  </g>
+</svg>
