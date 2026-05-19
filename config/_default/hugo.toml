@@ -1,0 +1,34 @@
+baseURL = "https://blog.chatrix.one/"
+title   = "Chatrix.One"
+
+defaultContentLanguage         = "bg"
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.bg]
+    languageName = "Български"
+    weight       = 1
+    contentDir   = "content/bg"
+  [languages.en]
+    languageName = "English"
+    weight       = 2
+    contentDir   = "content/en"
+
+[pagination]
+  pagerSize = 6
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  description    = "Chatrix.One Blog — XMPP, Communication, Software, Security, Privacy."
+  description_bg = "Chatrix.One Блог — XMPP, Комуникация, Софтуер, Сигурност, Поверителност."
+  author         = "Chatrix.One"
+  github         = "https://github.com/ChatrixOne"
+  mainsite       = "https://chatrix.one"
+  tagline        = "Keep the Chatting, Skip the Tracking!"
+
+[outputs]
+  home = ["HTML", "JSON"]

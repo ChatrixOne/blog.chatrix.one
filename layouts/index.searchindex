@@ -1,0 +1,15 @@
+{{- $pages := where .Site.RegularPages "Lang" .Site.Language.Lang -}}
+[
+  {{- range $i, $p := $pages -}}
+  {{- if $i }},{{ end -}}
+  {
+    "title":       {{ $p.Title | jsonify }},
+    "description": {{ $p.Description | jsonify }},
+    "tags":        {{ $p.Params.tags | jsonify }},
+    "url":         {{ $p.RelPermalink | jsonify }},
+    "date":        {{ $p.Date.Format "Jan 02, 2006" | jsonify }},
+    "image":       {{ $p.Params.image | default "" | jsonify }},
+    "content":     {{ $p.Plain | truncate 300 | jsonify }}
+  }
+  {{- end -}}
+]

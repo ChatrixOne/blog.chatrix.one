@@ -1,0 +1,274 @@
+# ─────────────────────────────────────────────────────────────
+#  i18n/en.toml  —  All English UI strings for Chatrix.One
+#
+#  HOW TO EDIT:
+#    Find the section you want (NAV, HERO, FEATURES, etc.)
+#    Change the text between the quote marks on the  other = "..."  line
+#    Save the file — that's it.
+# ─────────────────────────────────────────────────────────────
+
+# ── NAV ──────────────────────────────────────────────────────
+[nav_features]
+other = "Features"
+
+[nav_download]
+other = "Download"
+
+[nav_privacy]
+other = "Privacy"
+
+[nav_terms]
+other = "Terms"
+
+[nav_docs]
+other = "Docs"
+
+[nav_join]
+other = "Join free"
+
+# ── HERO ─────────────────────────────────────────────────────
+[hero_eyebrow]
+other = "Service operational · CH 🇨🇭 → Sofia 🇧🇬"
+
+[hero_lede]
+other = "A free, privacy-friendly way to talk with the people who matter. Encrypted by default, decentralized by design. No telemetry, no ads, no compromises. Register without giving up your identity."
+
+[hero_cta1]
+other = "Create an account"
+
+[hero_cta2]
+other = "Read documentation"
+
+[hero_meta1]
+other = "Crypt-check rating"
+
+[hero_meta2]
+other = "Trackers · Ads · Cookies"
+
+[hero_meta3]
+other = "Running since"
+
+# ── CHAT MOCKUP ───────────────────────────────────────────────
+[chat_name]
+other = "Maria · Sofia"
+
+[chat_status]
+other = "end-to-end encrypted"
+
+[chat_placeholder]
+other = "Type a message…"
+
+[float_encrypted]
+other = "OMEMO active"
+
+[float_keys]
+other = "keys · verified"
+
+[float_notrack]
+other = "Zero telemetry"
+
+# ── FEATURES SECTION ─────────────────────────────────────────
+[feat_eyebrow]
+other = "What's included"
+
+[feat_sub]
+other = "Built on the open XMPP standard: interoperable, durable, and yours forever."
+
+[feat_2_link]
+other = "Learn more →"
+
+[feat_3_link]
+other = "Donate →"
+
+# ── TECH MARQUEE ─────────────────────────────────────────────
+[tech_label]
+other = "Powered by open, time-tested technology"
+
+# ── DOWNLOADS SECTION ────────────────────────────────────────
+[dl_eyebrow]
+other = "Get the apps"
+
+[dl_sub]
+other = "Open clients, your choice. Use one of the recommended apps below, or any XMPP client that follows the standard."
+
+[dl_android]
+other = "A Jabber/XMPP client optimized for a unique mobile experience on Android 5.0+."
+
+[dl_ios]
+other = "Privacy like in 1999. The preferred client for the iOS platform: clean, native, secure."
+
+[dl_windows]
+other = "A full-fledged desktop client, actively developed, supporting all modern XMPP technologies."
+
+[dl_linux]
+other = "A modern, open-source desktop client focused on a clean, reliable, privacy-respecting experience."
+
+[dl_macos]
+other = "Same Monal experience, native to your Mac. Lightweight, encrypted, refreshingly simple."
+
+[dl_cli]
+other = "For enthusiasts: a terminal-based XMPP client available on virtually every operating system."
+
+# ── PRIVACY / KNOW BEFORE YOU GO ─────────────────────────────
+[kb_eyebrow]
+other = "Know before you go"
+
+[kb_sub]
+other = "Read carefully. Decide consciously. Your data, and your decision to share it, should always remain yours."
+
+[kb_1_title]
+other = "Account management"
+
+[kb_1_body]
+other = "Register, change your password, or delete your account in a few simple steps. Removal erases all your data."
+
+[kb_1_link]
+other = "Manage account →"
+
+[kb_2_title]
+other = "FAQ"
+
+[kb_2_body]
+other = "Answers to 80+ common questions, with quick search to find exactly what you're looking for."
+
+[kb_2_link]
+other = "Find answers →"
+
+[kb_3_title]
+other = "Alternatives"
+
+[kb_3_body]
+other = "Plenty of free XMPP servers exist. If Chatrix.One isn't quite right for you, find one that fits."
+
+[kb_3_link]
+other = "Find a server →"
+
+[kb_4_title]
+other = "Privacy"
+
+[kb_4_body]
+other = "An alternative to mainstream messaging, engineered for minimum data and the protection of personal information."
+
+[kb_4_link]
+other = "Read carefully →"
+
+[kb_5_title]
+other = "Terms"
+
+[kb_5_body]
+other = "Familiarize yourself with the rules every user, moderator, and administrator follows here."
+
+[kb_5_link]
+other = "Read carefully →"
+
+[kb_6_title]
+other = "Incidents"
+
+[kb_6_body]
+other = "Detailed log of any incidents, their context, impact, and the actions that have been taken."
+
+[kb_6_link]
+other = "View log →"
+
+# ── FOOTER ───────────────────────────────────────────────────
+[foot_tag_pre]
+other = "A free, decentralized, privacy-friendly XMPP service. Made with "
+
+[foot_tag_post]
+other = ""
+
+[foot_product]
+other = "Chatrix.One"
+
+[foot_legal]
+other = "Legal"
+
+[foot_contact]
+other = "Contact"
+
+[foot_status]
+other = "Status"
+
+[foot_terms]
+other = "Terms"
+
+[foot_faq]
+other = "FAQ"
+
+[foot_copy_pre]
+other = "No cookies, no tracking · Made with "
+
+[foot_copy_post]
+other = " in Sofia"
+
+# ── QR CODE CARD ─────────────────────────────────────────────
+[qr_title]
+other = "Scan to create an account"
+
+[qr_sub]
+other = "Point your phone camera\nat the code to register"
+
+[qr_alt]
+other = "QR code for Chatrix.One account registration"
+
+# ── BLOG ─────────────────────────────────────────────────────
+[nav_blog]
+other = "Blog"
+
+[blog_eyebrow]
+other = "Latest posts"
+
+[blog_title]
+other = "Blog"
+
+[blog_desc]
+other = "News, guides, and updates from the Chatrix.One team."
+
+[blog_readmore]
+other = "Read more"
+
+[blog_back]
+other = "Back to blog"
+
+[blog_readtime]
+other = "About"
+
+[blog_minutes]
+other = "min read"
+
+[blog_prev]
+other = "Newer posts"
+
+[blog_next]
+other = "Older posts"
+
+[blog_empty]
+other = "No posts yet. Check back soon."
+
+[float_notrack_sub]
+other = "no logs · no ads"
+
+# ── CALL SCREEN ───────────────────────────────────────────────
+[call_incoming]
+other = "Incoming encrypted call…"
+
+[call_accept]
+other = "Accept"
+
+[call_decline]
+other = "Decline"
+
+[call_active]
+other = "Encrypted call"
+
+[sound_off]
+other = "Sound off"
+
+[sound_on]
+other = "Sound on"
+
+[float_share_title]
+other = "Share anything"
+
+[nav_home]
+other = "Home"

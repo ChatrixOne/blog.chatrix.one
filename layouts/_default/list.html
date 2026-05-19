@@ -1,0 +1,64 @@
+{{ define "main" }}
+<section class="blog-section">
+  <div class="blog-inner">
+
+    <div class="blog-header">
+      <h1 class="blog-page-title">Blog</h1>
+      <p class="blog-page-sub">{{ .Site.Params.description }}</p>
+    </div>
+
+    {{ $paginator := .Paginate (.Pages.ByWeight) }}
+    {{ if .Pages }}
+    <div class="blog-grid">
+      {{ range $i, $page := $paginator.Pages }}
+      <article class="post-card reveal{{ if $page.Params.weight }} is-pinned{{ end }}">
+        <a href="{{ $page.RelPermalink }}" class="post-card-link">
+          {{ if $page.Params.image }}
+          <div class="post-card-img">
+            <img src="{{ if hasPrefix $page.Params.image "http" }}{{ $page.Params.image }}{{ else }}{{ $page.Params.image | relURL }}{{ end }}" alt="{{ $page.Title }}" loading="lazy">
+          </div>
+          {{ end }}
+          <div class="post-card-content">
+          {{ if $page.Params.weight }}<div class="post-pinned-badge">{{ if eq .Site.Language.Lang "bg" }}📌 Закачено{{ else }}📌 Pinned{{ end }}</div>{{ end }}
+          <div class="post-card-top">
+            <time class="post-date" datetime="{{ $page.Date.Format "2006-01-02" }}">
+              {{ $page.Date.Format "Jan 02, 2006" }}
+            </time>
+            {{ if $page.Params.tags }}
+            <div class="post-tags">
+              {{ range first 2 $page.Params.tags }}
+              <span class="post-tag">{{ . }}</span>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+          <h2 class="post-title">{{ $page.Title }}</h2>
+          {{ if $page.Description }}
+          <p class="post-excerpt">{{ $page.Description }}</p>
+          {{ end }}
+          <span class="post-read-more">Read more →</span>
+          </div>
+        </a>
+      </article>
+      {{ end }}
+    </div>
+
+    {{ if gt .Paginator.TotalPages 1 }}
+    <nav class="blog-pagination" aria-label="Blog pagination">
+      {{ if .Paginator.HasPrev }}
+      <a href="{{ .Paginator.Prev.URL }}" class="btn btn-secondary">← Newer posts</a>
+      {{ end }}
+      <span class="blog-page-info">{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}</span>
+      {{ if .Paginator.HasNext }}
+      <a href="{{ .Paginator.Next.URL }}" class="btn btn-secondary">Older posts →</a>
+      {{ end }}
+    </nav>
+    {{ end }}
+
+    {{ else }}
+    <p class="blog-empty">No posts yet. Check back soon.</p>
+    {{ end }}
+
+  </div>
+</section>
+{{ end }}

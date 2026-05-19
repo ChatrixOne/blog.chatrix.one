@@ -1,0 +1,79 @@
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+
+    <a href="{{ "/" | relLangURL }}" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-dark" width="32" height="35" viewBox="0 0 120 130" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 6 Q6 6 6 16 L6 84 Q6 94 16 94 L72 94 L88 114 L88 94 L104 94 Q114 94 114 84 L114 16 Q114 6 104 6 Z" fill="#111111"/>
+          <text x="52" y="60" text-anchor="middle" font-size="38" font-weight="700" font-family="'Atkinson Hyperlegible',sans-serif" fill="#ffffff" letter-spacing="-1">CX</text>
+          <text x="83" y="32" font-size="22" font-weight="700" font-family="'Atkinson Hyperlegible',sans-serif" fill="#ffffff">1</text>
+        </svg>
+        <svg class="logo-light" width="32" height="35" viewBox="0 0 120 130" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 6 Q6 6 6 16 L6 84 Q6 94 16 94 L72 94 L88 114 L88 94 L104 94 Q114 94 114 84 L114 16 Q114 6 104 6 Z" fill="#ffffff"/>
+          <text x="52" y="60" text-anchor="middle" font-size="38" font-weight="700" font-family="'Atkinson Hyperlegible',sans-serif" fill="#111111" letter-spacing="-1">CX</text>
+          <text x="83" y="32" font-size="22" font-weight="700" font-family="'Atkinson Hyperlegible',sans-serif" fill="#111111">1</text>
+        </svg>
+      </span>
+      <span class="brand-wordmark">chatrix<span class="brand-dot">.</span>one</span>
+    </a>
+
+    <div class="nav-search" id="navSearch">
+      <svg class="nav-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text"
+             class="nav-search-input"
+             id="searchInput"
+             placeholder="{{ if eq .Site.Language.Lang "bg" }}Търси…{{ else }}Search…{{ end }}"
+             autocomplete="off">
+    </div>
+
+    <div class="nav-actions">
+      <div class="lang-switch" role="tablist" aria-label="Language">
+        {{ range .Rotate "language" }}
+          <a href="{{ .RelPermalink }}"
+             class="lang-btn{{ if eq .Site.Language.Lang $.Site.Language.Lang }} active{{ end }}">
+            {{ .Site.Language.Lang | upper }}
+          </a>
+        {{ end }}
+      </div>
+
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-search-wrap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" class="mobile-search-input" id="searchInputMobile"
+             placeholder="{{ if eq .Site.Language.Lang "bg" }}Търси…{{ else }}Search…{{ end }}"
+             autocomplete="off">
+    </div>
+    <a href="{{ "/" | relLangURL }}">{{ if eq .Site.Language.Lang "bg" }}Блог{{ else }}Blog{{ end }}</a>
+    <a href="{{ .Site.Params.mainsite }}">{{ if eq .Site.Language.Lang "bg" }}Основен сайт{{ else }}Main site{{ end }}</a>
+  </div>
+
+  <div class="search-dropdown" id="searchDropdown" aria-hidden="true">
+    <ul class="search-results" id="searchResults" aria-live="polite"></ul>
+  </div>
+
+</nav>

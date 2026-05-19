@@ -1,0 +1,62 @@
+{{ define "main" }}
+<section class="blog-section">
+  <div class="blog-inner">
+
+    <div class="blog-header">
+      <h1 class="blog-page-title">{{ if eq .Site.Language.Lang "bg" }}Блог{{ else }}Blog{{ end }}</h1>
+      <p class="blog-page-sub">{{ if eq .Site.Language.Lang "bg" }}{{ .Site.Params.description_bg }}{{ else }}{{ .Site.Params.description }}{{ end }}</p>
+    </div>
+
+    {{ $posts := where .Site.RegularPages "Lang" .Site.Language.Lang }}
+    {{ $paginator := .Paginate $posts }}
+    {{ if $paginator.Pages }}
+    <div class="blog-grid">
+      {{ range $paginator.Pages }}
+      <article class="post-card">
+        <a href="{{ .RelPermalink }}" class="post-card-link">
+          {{ if .Params.image }}
+          <div class="post-card-img">
+            <img src="{{ if hasPrefix .Params.image "http" }}{{ .Params.image }}{{ else }}{{ .Params.image | relURL }}{{ end }}" alt="{{ .Title }}" loading="lazy">
+          </div>
+          {{ end }}
+          <div class="post-card-top">
+            <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
+              {{ .Date.Format "Jan 02, 2006" }}
+            </time>
+            {{ if .Params.tags }}
+            <div class="post-tags">
+              {{ range first 2 .Params.tags }}
+              <span class="post-tag">{{ . }}</span>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+          <h2 class="post-title">{{ .Title }}</h2>
+          {{ if .Description }}
+          <p class="post-excerpt">{{ .Description }}</p>
+          {{ end }}
+          <span class="post-read-more">{{ if eq .Site.Language.Lang "bg" }}Прочети →{{ else }}Read more →{{ end }}</span>
+        </a>
+      </article>
+      {{ end }}
+    </div>
+
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="blog-pagination" aria-label="Blog pagination">
+      {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" class="btn btn-secondary">{{ if eq .Site.Language.Lang "bg" }}← По-нови{{ else }}← Newer{{ end }}</a>
+      {{ end }}
+      <span class="blog-page-info">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" class="btn btn-secondary">{{ if eq .Site.Language.Lang "bg" }}По-стари →{{ else }}Older →{{ end }}</a>
+      {{ end }}
+    </nav>
+    {{ end }}
+
+    {{ else }}
+    <p class="blog-empty">{{ if eq .Site.Language.Lang "bg" }}Няма публикации все още.{{ else }}No posts yet.{{ end }}</p>
+    {{ end }}
+
+  </div>
+</section>
+{{ end }}
