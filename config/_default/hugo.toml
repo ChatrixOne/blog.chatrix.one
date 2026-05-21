@@ -6,11 +6,11 @@ defaultContentLanguageInSubdir = false
 
 [languages]
   [languages.bg]
-    languageName = "Български"
+    label = "Български"
     weight       = 1
     contentDir   = "content/bg"
   [languages.en]
-    languageName = "English"
+    label = "English"
     weight       = 2
     contentDir   = "content/en"
 
