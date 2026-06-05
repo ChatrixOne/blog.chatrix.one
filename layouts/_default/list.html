@@ -3,12 +3,12 @@
   <div class="blog-inner">
 
     <div class="blog-header">
-      <h1 class="blog-page-title">Blog</h1>
-      <p class="blog-page-sub">{{ .Site.Params.description }}</p>
+      <h1 class="blog-page-title">{{ if eq .Site.Language.Lang "bg" }}Блог{{ else }}Blog{{ end }}</h1>
+      <p class="blog-page-sub">{{ if eq .Site.Language.Lang "bg" }}{{ .Site.Params.description_bg }}{{ else }}{{ .Site.Params.description }}{{ end }}</p>
     </div>
 
     {{ $paginator := .Paginate (.Pages.ByWeight) }}
-    {{ if .Pages }}
+    {{ if $paginator.Pages }}
     <div class="blog-grid">
       {{ range $i, $page := $paginator.Pages }}
       <article class="post-card reveal{{ if $page.Params.weight }} is-pinned{{ end }}">
@@ -19,7 +19,7 @@
           </div>
           {{ end }}
           <div class="post-card-content">
-          {{ if $page.Params.weight }}<div class="post-pinned-badge">{{ if eq .Site.Language.Lang "bg" }}📌 Закачено{{ else }}📌 Pinned{{ end }}</div>{{ end }}
+          {{ if $page.Params.weight }}<div class="post-pinned-badge">{{ if eq $.Site.Language.Lang "bg" }}📌 Закачено{{ else }}📌 Pinned{{ end }}</div>{{ end }}
           <div class="post-card-top">
             <time class="post-date" datetime="{{ $page.Date.Format "2006-01-02" }}">
               {{ $page.Date.Format "Jan 02, 2006" }}
@@ -36,27 +36,27 @@
           {{ if $page.Description }}
           <p class="post-excerpt">{{ $page.Description }}</p>
           {{ end }}
-          <span class="post-read-more">Read more →</span>
+          <span class="post-read-more">{{ if eq $.Site.Language.Lang "bg" }}Прочети →{{ else }}Read more →{{ end }}</span>
           </div>
         </a>
       </article>
       {{ end }}
     </div>
 
-    {{ if gt .Paginator.TotalPages 1 }}
+    {{ if gt $paginator.TotalPages 1 }}
     <nav class="blog-pagination" aria-label="Blog pagination">
-      {{ if .Paginator.HasPrev }}
-      <a href="{{ .Paginator.Prev.URL }}" class="btn btn-secondary">← Newer posts</a>
+      {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" class="btn btn-secondary">{{ if eq .Site.Language.Lang "bg" }}← По-нови{{ else }}← Newer{{ end }}</a>
       {{ end }}
-      <span class="blog-page-info">{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}</span>
-      {{ if .Paginator.HasNext }}
-      <a href="{{ .Paginator.Next.URL }}" class="btn btn-secondary">Older posts →</a>
+      <span class="blog-page-info">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" class="btn btn-secondary">{{ if eq .Site.Language.Lang "bg" }}По-стари →{{ else }}Older →{{ end }}</a>
       {{ end }}
     </nav>
     {{ end }}
 
     {{ else }}
-    <p class="blog-empty">No posts yet. Check back soon.</p>
+    <p class="blog-empty">{{ if eq .Site.Language.Lang "bg" }}Няма публикации все още.{{ else }}No posts yet.{{ end }}</p>
     {{ end }}
 
   </div>
