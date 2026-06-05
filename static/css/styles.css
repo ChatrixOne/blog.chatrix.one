@@ -103,16 +103,6 @@ ul, ol { margin: 0; padding: 0; }
 }
 .brand-dot { color: var(--accent); }
 
-/* Logo dark/light */
-.logo-dark  { display: block; }
-.logo-light { display: none; }
-[data-theme="dark"] .logo-dark  { display: none; }
-[data-theme="dark"] .logo-light { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) .logo-dark  { display: none; }
-  :root:not([data-theme]) .logo-light { display: block; }
-}
-
 /* Search bar */
 .nav-search {
   flex: 1;
