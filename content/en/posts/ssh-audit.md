@@ -3,7 +3,7 @@ title:       "SSH-Audit — Security Checking Tool"
 date:        2024-01-23
 description: "A poorly configured SSH server is a sure recipe for an upcoming disaster. How to use SSH-Audit to improve security."
 tags:        ["security", "linux", "tools", "ssh"]
-image:       "https://blog.chatrix.one/assets/img/posts_images/ssh_audit/ssh-audit.jpg"
+image:       "/images/posts/ssh_audit/ssh-audit.jpg"
 ---
 
 ## Introduction
