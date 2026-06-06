@@ -176,10 +176,10 @@ ___Жълтата дюля беше щастлива, че пухът, койт�
 ### Локално
 
 ```markdown
-![Phone-Mockup](/assets/img/posts_images/meet_markdown/phone-mockup.png)
+![Phone-Mockup](/images/posts/meet_markdown/phone-mockup.png)
 ```
 
-![Phone-Mockup](phone-mockup.png)
+![Phone-Mockup](/images/posts/meet_markdown/phone-mockup.png)
 *Изображението се зарежда и визуализира от локално хранилище.*
 
 ## Списъци
@@ -358,26 +358,26 @@ if config.is_file():
 
 ## Диаграми
 
-![Mermaid-Pie](mermaid-pie.jpg)
+![Mermaid-Pie](/images/posts/meet_markdown/mermaid-pie.jpg)
 *С цел правилно визуализиране, посоченият код е под формата на изображение.*
 
 ```mermaid
-pie
-"Мазнини" : 60
-"Белтъчини" : 30
-"Въглехидрати" : 10
+pie showData
+    "Мазнини" : 60
+    "Белтъчини" : 30
+    "Въглехидрати" : 10
 ```
 
 ## Блок схема
 
-![Mermaid-Flow](mermaid-flow.jpg)
+![Mermaid-Flow](/images/posts/meet_markdown/mermaid-flow.jpg)
 *С цел правилно визуализиране, посоченият код е под формата на изображение.*
 
 ```mermaid
 graph LR
-    A[Правоъгълник] -- Текст над стрелка --> B((Кръг))
-    A --> C(Заоблен правоъгълник)
-    B --> D{Ромб}
+    A["Правоъгълник"] -- "Текст над стрелка" --> B(("Кръг"))
+    A --> C("Заоблен правоъгълник")
+    B --> D{"Ромб"}
     C --> D
 ```
 

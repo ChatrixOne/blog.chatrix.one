@@ -12,6 +12,8 @@ On 17.07.2024 Chatrix.One was included in the [XMPP Providers](https://providers
 
 At the time of listing, the directory included 61 providers in total, of which only 16 are **Category A**.
 
+![XMPP Providers Chart](/images/posts/xmpp-providers-category-A/xmpp-providers-chart.jpeg)
+
 - More information: [XMPP Providers](https://providers.xmpp.net/)
 - Detailed info for Chatrix.One: [XMPP Providers - Chatrix.One](https://providers.xmpp.net/provider/chatrix.one/)
 - Comparison of all providers: [XMPP Providers Overview](https://providers.xmpp.net/overview/)

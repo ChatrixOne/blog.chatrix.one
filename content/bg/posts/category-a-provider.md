@@ -12,7 +12,7 @@ image:       "/images/posts/xmpp-providers-category-A/xmpp-providers.jpeg"
 
 Към момента, в списъка са включени общо 61 доставчика, от които само 16 са **категория А**.
 
-![XMPP Providers Chart](xmpp-providers-chart.jpeg)
+![XMPP Providers Chart](/images/posts/xmpp-providers-category-A/xmpp-providers-chart.jpeg)
 
 - Повече информация можете да прочетете на страницата на [XMPP Providers](https://providers.xmpp.net/)
 - Детайлна информация за Chatrix.One: [XMPP Providers - Chatrix.One](https://providers.xmpp.net/provider/chatrix.one/)
