@@ -1,7 +1,6 @@
 ---
 title:       "A Bulgarian XMPP Server"
 date:        2019-06-15
-url:         "/post/Bulgarian-XMPP-server"
 weight:      1
 description: "Chatrix.One is a Bulgarian XMPP server for free, end-to-end encrypted communication, with no telemetry and no ads."
 tags:        ["xmpp", "news", "service", "communication"]
