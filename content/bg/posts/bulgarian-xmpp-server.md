@@ -1,7 +1,7 @@
 ---
 title:       "Български XMPP сървър"
 date:        2019-06-15
-url:         "/posts/Bulgarian-XMPP-Server"
+url:         "/posts/Bulgarian-XMPP-server"
 weight:      1
 description: "Chatrix.One е Български XMPP сървър за безплатна, криптирана от край до край комуникация, без телеметрия и без реклами."
 tags:        ["xmpp", "новини", "услуга", "комуникация"]
