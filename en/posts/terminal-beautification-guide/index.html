@@ -1,0 +1,965 @@
+<!doctype html><html lang=en data-theme=dark><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="A complete guide to transforming a boring black-and-white SSH terminal into a colorful, informative, eye-friendly workspace with Zsh, Powerlevel10k, and modern CLI tools."><title>How I Made My Terminal Beautiful (And Actually Enjoy Staring at It All Day) | Chatrix.One</title><link rel=icon type=image/svg+xml href=/favicon.svg><link rel=apple-touch-icon href=/favicon.svg><link rel=stylesheet href=/css/fonts.css><link rel=stylesheet href=/css/styles.css><link rel=alternate type=application/rss+xml title=Chatrix.One href=/en/index.xml></head><body><nav class=nav id=nav><div class=nav-inner><a href=/en/ class=brand><span class=brand-mark aria-hidden=true><svg width="32" height="35" viewBox="0 0 1198 1200" fill="none"><path d="M6e2 90C6e2 40.2944 559.483-.691048 510.335 6.73717 423.523 19.8582 340.267 51.9344 266.658 101.118 167.988 167.047 91.0849 260.754 45.6723 370.39.259702 480.026-11.6223 600.666 11.5288 717.054 34.68 833.443 91.8244 940.353 175.736 1024.26 259.647 1108.18 366.557 1165.32 482.946 1188.47 599.334 1211.62 719.974 1199.74 829.61 1154.33 939.246 1108.92 1032.95 1032.01 1098.88 933.342 1148.07 859.733 1180.14 776.477 1193.26 689.665 1200.69 640.517 1159.71 6e2 1110 6e2H990c-49.706.0-88.71 41.172-103.399 88.657C878.09 716.171 865.615 742.464 849.441 766.671 816.476 816.006 769.623 854.458 714.805 877.164c-54.818 22.706-115.138 28.647-173.332 17.072-58.194-11.576-111.649-40.148-153.605-82.104C345.912 770.176 317.34 716.721 305.764 658.527 294.189 600.333 300.13 540.013 322.836 485.195c22.706-54.818 61.158-101.671 110.493-134.636 24.207-16.174 50.5-28.649 78.014-37.16C558.828 298.71 6e2 259.706 6e2 210V90z" fill="var(--accent)"/><circle cx="900" cy="300" r="150" fill="var(--accent)"/></svg>
+</span><span class=brand-wordmark>chatrix<span class=brand-dot>.</span>one</span></a><div class=nav-search id=navSearch><svg class="nav-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text class=nav-search-input id=searchInput placeholder=Search… autocomplete=off></div><div class=nav-actions><div class=lang-switch role=tablist aria-label=Language><a href=/posts/terminal-beautification-guide/ class=lang-btn>BG
+</a><a href=/en/posts/terminal-beautification-guide/ class="lang-btn active">EN</a></div><button type=button class=theme-toggle id=themeToggle aria-label="Toggle theme">
+<svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+<svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button type=button class=nav-hamburger id=navHamburger aria-label="Open menu" aria-expanded=false>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div><div class=mobile-menu id=mobileMenu aria-hidden=true><div class=mobile-search-wrap><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text class=mobile-search-input id=searchInputMobile placeholder=Search… autocomplete=off></div><a href=/en/>Blog</a>
+<a href=https://chatrix.one>Main site</a></div><div class=search-dropdown id=searchDropdown aria-hidden=true><ul class=search-results id=searchResults aria-live=polite></ul></div></nav><main id=main><article class=single-post><div class=single-post-inner><a href=/en/ class=post-back><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg>
+← Back to blog</a><header class=single-post-header><div class=single-post-meta><time datetime=2026-06-06>Jun 06, 2026</time><div class=post-tags><span class=post-tag>linux</span>
+<span class=post-tag>terminal</span>
+<span class=post-tag>zsh</span>
+<span class=post-tag>sysadmin</span>
+<span class=post-tag>productivity</span></div></div><h1 class=single-post-title>How I Made My Terminal Beautiful (And Actually Enjoy Staring at It All Day)</h1><p class=single-post-desc>A complete guide to transforming a boring black-and-white SSH terminal into a colorful, informative, eye-friendly workspace with Zsh, Powerlevel10k, and modern CLI tools.</p></header><div class=single-post-image><img src=/images/posts/terminal-beautification-guide/terminal-glow.png alt="How I Made My Terminal Beautiful (And Actually Enjoy Staring at It All Day)" loading=lazy></div><div class="single-post-body prose"><p>I spend most of my day SSH&rsquo;d into servers. For years that meant staring at a white-on-black PuTTY window, squinting at walls of text, and constantly running <code>git status</code> because my prompt told me absolutely nothing. One day I decided to fix that for good.</p><p>This guide walks through the full setup, both the server side and the SSH client side, to get a terminal that is genuinely pleasant to look at and actually useful. Everything here is open source.</p><p>Here is what the end result gives you:</p><ul><li>A prompt that changes color and shows branch name, dirty state, and ahead/behind counts the moment you enter a git repo</li><li>Commands light up in cyan as you type them, and turn red if they don&rsquo;t exist</li><li>Dim ghost suggestions from your command history appear as you type, and you accept them with the right arrow key</li><li>File listings with icons, colors, and git status per file</li><li>Syntax-highlighted file previews instead of plain <code>cat</code> output</li><li>A fuzzy finder for files and command history</li><li>A color scheme that is easy on the eyes for long sessions</li></ul><p>Let&rsquo;s get into it.</p><h2 id=what-we-are-installing>What We Are Installing</h2><p>There are two sides to this setup.</p><p><strong>On the server</strong> (the remote Linux machine you SSH into):</p><ul><li><strong>Zsh</strong> as the shell, replacing Bash</li><li><strong>Oh My Zsh</strong> as the plugin framework</li><li><strong>Powerlevel10k</strong> as the prompt theme (this is where the git magic happens)</li><li><strong>zsh-autosuggestions</strong> for history-based ghost text</li><li><strong>zsh-syntax-highlighting</strong> for live command coloring</li><li><strong>zsh-completions</strong> for better tab completion</li><li><strong>eza</strong> as a modern replacement for <code>ls</code></li><li><strong>bat</strong> as a modern replacement for <code>cat</code></li><li><strong>fd</strong> as a modern replacement for <code>find</code></li><li><strong>ripgrep</strong> as a modern replacement for <code>grep</code></li><li><strong>fzf</strong> as a fuzzy finder for everything</li></ul><p><strong>On your local machine</strong> (where you sit and type):</p><ul><li>A terminal that supports true color (24-bit) and Unicode</li><li>The JetBrains Mono Nerd Font (for the icons in the prompt)</li></ul><h2 id=step-1-ditch-putty>Step 1: Ditch PuTTY</h2><p>I know, I know. PuTTY has been the go-to SSH client forever. But it was designed in a 256-color world, and that limitation makes everything look washed out no matter what you do on the server side. Switching your SSH client is the single biggest visual upgrade you can make.</p><h3 id=option-a-windows-terminal-recommended>Option A: Windows Terminal (Recommended)</h3><p>Windows Terminal is open source (MIT license), built into Windows 11, and available for Windows 10 from the Microsoft Store or from <a href=https://github.com/microsoft/terminal>the GitHub releases page</a>. It has tabs, GPU-rendered text, full true color support, and excellent font rendering.</p><p>It uses the OpenSSH client that already ships with Windows 10 and 11, so connecting to a server is just:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>ssh user@your-server.com
+</span></span></code></pre></div><p>No extra setup needed for basic SSH.</p><h3 id=option-b-alacritty>Option B: Alacritty</h3><p>If privacy is your top priority, <a href=https://github.com/alacritty/alacritty>Alacritty</a> is the one. Written in Rust, Apache 2.0 license, zero telemetry, GPU-accelerated. It is minimal by design and does one thing well.</p><p>Install it from the <a href=https://github.com/alacritty/alacritty/releases>releases page</a> or via winget:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-powershell data-lang=powershell><span style=display:flex><span>winget install Alacritty.Alacritty
+</span></span></code></pre></div><h2 id=step-2-install-the-nerd-font>Step 2: Install the Nerd Font</h2><p>This is the step people forget and then wonder why they see little boxes instead of icons. The font has to be installed on <strong>your local machine</strong>, the one you are sitting in front of. Not the server.</p><p>Download JetBrains Mono from <a href=https://www.nerdfonts.com/font-downloads>nerdfonts.com</a>, extract the zip, select all the <code>.ttf</code> files, right-click, and choose &ldquo;Install for all users&rdquo;.</p><p>Then set it as your terminal font:</p><p><strong>Windows Terminal:</strong> Open Settings (Ctrl+,), go to your profile, and set the font to <code>JetBrainsMono Nerd Font</code>, size 11 or 12.</p><p><strong>Alacritty:</strong> Create the config file at <code>%APPDATA%\alacritty\alacritty.toml</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-toml data-lang=toml><span style=display:flex><span>[<span style=color:#a6e22e>font</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>size</span> = <span style=color:#ae81ff>11.0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>font</span>.<span style=color:#a6e22e>normal</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>family</span> = <span style=color:#e6db74>&#34;JetBrainsMono Nerd Font&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>style</span> = <span style=color:#e6db74>&#34;Regular&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>font</span>.<span style=color:#a6e22e>bold</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>family</span> = <span style=color:#e6db74>&#34;JetBrainsMono Nerd Font&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>style</span> = <span style=color:#e6db74>&#34;Bold&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>window</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>padding</span> = { <span style=color:#a6e22e>x</span> = <span style=color:#ae81ff>12</span>, <span style=color:#a6e22e>y</span> = <span style=color:#ae81ff>12</span> }
+</span></span><span style=display:flex><span><span style=color:#a6e22e>opacity</span> = <span style=color:#ae81ff>0.95</span>
+</span></span></code></pre></div><h2 id=step-3-apply-the-color-scheme>Step 3: Apply the Color Scheme</h2><p>The whole setup uses a Tokyo Night inspired palette. Dark blue-gray background, soft foreground colors, and distinct but not harsh accent colors. Easy on the eyes for long sessions.</p><h3 id=for-windows-terminal>For Windows Terminal</h3><p>Open Settings, click &ldquo;Open JSON file&rdquo; at the bottom left, and paste this into the <code>"schemes"</code> array:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;Terminal Glow&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;background&#34;</span>: <span style=color:#e6db74>&#34;#1A1B26&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;foreground&#34;</span>: <span style=color:#e6db74>&#34;#C0CAF5&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;cursorColor&#34;</span>: <span style=color:#e6db74>&#34;#BB9AF7&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;selectionBackground&#34;</span>: <span style=color:#e6db74>&#34;#2A2E3F&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;black&#34;</span>: <span style=color:#e6db74>&#34;#15161E&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;red&#34;</span>: <span style=color:#e6db74>&#34;#F7768E&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;green&#34;</span>: <span style=color:#e6db74>&#34;#9ECE6A&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;yellow&#34;</span>: <span style=color:#e6db74>&#34;#E0AF68&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;blue&#34;</span>: <span style=color:#e6db74>&#34;#7AA2F7&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;purple&#34;</span>: <span style=color:#e6db74>&#34;#BB9AF7&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;cyan&#34;</span>: <span style=color:#e6db74>&#34;#7DCFFF&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;white&#34;</span>: <span style=color:#e6db74>&#34;#A9B1D6&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;brightBlack&#34;</span>: <span style=color:#e6db74>&#34;#414868&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;brightRed&#34;</span>: <span style=color:#e6db74>&#34;#F7768E&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;brightGreen&#34;</span>: <span style=color:#e6db74>&#34;#9ECE6A&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;brightYellow&#34;</span>: <span style=color:#e6db74>&#34;#E0AF68&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;brightBlue&#34;</span>: <span style=color:#e6db74>&#34;#7AA2F7&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;brightPurple&#34;</span>: <span style=color:#e6db74>&#34;#BB9AF7&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;brightCyan&#34;</span>: <span style=color:#e6db74>&#34;#7DCFFF&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;brightWhite&#34;</span>: <span style=color:#e6db74>&#34;#C0CAF5&#34;</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Then in your SSH profile, set <code>"colorScheme": "Terminal Glow"</code>. Here is a full profile example you can drop into the <code>"profiles"</code> list:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;My Server&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;commandline&#34;</span>: <span style=color:#e6db74>&#34;ssh user@your-server.com&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;colorScheme&#34;</span>: <span style=color:#e6db74>&#34;Terminal Glow&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;font&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;face&#34;</span>: <span style=color:#e6db74>&#34;JetBrainsMono Nerd Font&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;size&#34;</span>: <span style=color:#ae81ff>11</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;opacity&#34;</span>: <span style=color:#ae81ff>95</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;useAcrylic&#34;</span>: <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;padding&#34;</span>: <span style=color:#e6db74>&#34;12&#34;</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=for-alacritty>For Alacritty</h3><p>Add these colors to your <code>alacritty.toml</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-toml data-lang=toml><span style=display:flex><span>[<span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>primary</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>background</span> = <span style=color:#e6db74>&#34;#1a1b26&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>foreground</span> = <span style=color:#e6db74>&#34;#c0caf5&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>cursor</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>cursor</span> = <span style=color:#e6db74>&#34;#bb9af7&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>text</span> = <span style=color:#e6db74>&#34;#1a1b26&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>selection</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>background</span> = <span style=color:#e6db74>&#34;#2a2e3f&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>text</span> = <span style=color:#e6db74>&#34;#c0caf5&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>normal</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>black</span>   = <span style=color:#e6db74>&#34;#15161e&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>red</span>     = <span style=color:#e6db74>&#34;#f7768e&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>green</span>   = <span style=color:#e6db74>&#34;#9ece6a&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>yellow</span>  = <span style=color:#e6db74>&#34;#e0af68&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>blue</span>    = <span style=color:#e6db74>&#34;#7aa2f7&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>magenta</span> = <span style=color:#e6db74>&#34;#bb9af7&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>cyan</span>    = <span style=color:#e6db74>&#34;#7dcfff&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>white</span>   = <span style=color:#e6db74>&#34;#a9b1d6&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>bright</span>]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>black</span>   = <span style=color:#e6db74>&#34;#414868&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>red</span>     = <span style=color:#e6db74>&#34;#f7768e&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>green</span>   = <span style=color:#e6db74>&#34;#9ece6a&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>yellow</span>  = <span style=color:#e6db74>&#34;#e0af68&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>blue</span>    = <span style=color:#e6db74>&#34;#7aa2f7&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>magenta</span> = <span style=color:#e6db74>&#34;#bb9af7&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>cyan</span>    = <span style=color:#e6db74>&#34;#7dcfff&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>white</span>   = <span style=color:#e6db74>&#34;#c0caf5&#34;</span>
+</span></span></code></pre></div><h2 id=step-4-set-up-ssh-keys-and-config>Step 4: Set Up SSH Keys and Config</h2><p>While we are on the client side, let&rsquo;s set up key-based auth and an SSH config so you never type long connection strings again.</p><p>If you don&rsquo;t have a key yet:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-powershell data-lang=powershell><span style=display:flex><span>ssh-keygen -t ed25519 -C <span style=color:#e6db74>&#34;your@email.com&#34;</span>
+</span></span></code></pre></div><p>Copy it to your server:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-powershell data-lang=powershell><span style=display:flex><span>type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh user@your-server.com <span style=color:#e6db74>&#34;mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&#34;</span>
+</span></span></code></pre></div><p>Then create <code>C:\Users\YourUsername\.ssh\config</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Host *
+</span></span><span style=display:flex><span>    ServerAliveInterval 60
+</span></span><span style=display:flex><span>    ServerAliveCountMax 3
+</span></span><span style=display:flex><span>    AddKeysToAgent yes
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Host myserver
+</span></span><span style=display:flex><span>    HostName your-server.com
+</span></span><span style=display:flex><span>    User root
+</span></span><span style=display:flex><span>    IdentityFile C:\Users\YourUsername\.ssh\id_ed25519
+</span></span></code></pre></div><p>Now connecting is just <code>ssh myserver</code>. The <code>Host *</code> block applies keepalive settings to all connections so your sessions don&rsquo;t drop when you step away.</p><p>If you manage many servers, the <code>Host *</code> block handles the shared defaults and each server only needs two lines:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Host web1
+</span></span><span style=display:flex><span>    HostName web1.example.com
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Host db1
+</span></span><span style=display:flex><span>    HostName db1.example.com
+</span></span><span style=display:flex><span>    User postgres
+</span></span></code></pre></div><p>Enable the SSH agent so you only type your key passphrase once per session:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-powershell data-lang=powershell><span style=display:flex><span>Get-Service ssh-agent | Set-Service -StartupType Automatic
+</span></span><span style=display:flex><span>Start-Service ssh-agent
+</span></span><span style=display:flex><span>ssh-add $env:USERPROFILE\.ssh\id_ed25519
+</span></span></code></pre></div><h2 id=step-5-server-side-setup>Step 5: Server-Side Setup</h2><p>Now SSH into your server and install the good stuff. This section assumes Ubuntu or Debian.</p><h3 id=install-zsh-and-the-cli-tools>Install Zsh and the CLI tools</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sudo apt update
+</span></span><span style=display:flex><span>sudo apt install -y zsh git curl wget unzip fontconfig bat fd-find ripgrep fzf
+</span></span></code></pre></div><p>On Debian/Ubuntu, <code>bat</code> is installed as <code>batcat</code> and <code>fd</code> is installed as <code>fdfind</code>. Create symlinks so you can use the short names:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sudo ln -sf <span style=color:#66d9ef>$(</span>command -v batcat<span style=color:#66d9ef>)</span> /usr/local/bin/bat
+</span></span><span style=display:flex><span>sudo ln -sf <span style=color:#66d9ef>$(</span>command -v fdfind<span style=color:#66d9ef>)</span> /usr/local/bin/fd
+</span></span></code></pre></div><p>For <code>eza</code> (the modern <code>ls</code> replacement), check if it is in your repos first:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sudo apt install eza
+</span></span></code></pre></div><p>If that doesn&rsquo;t work (older Ubuntu/Debian), grab it from GitHub:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>EZA_VERSION<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>curl -s https://api.github.com/repos/eza-community/eza/releases/latest | grep <span style=color:#e6db74>&#39;&#34;tag_name&#34;&#39;</span> | head -1 | sed -E <span style=color:#e6db74>&#39;s/.*&#34;v([^&#34;]+)&#34;.*/\1/&#39;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>ARCH<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>dpkg --print-architecture<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>curl -sL <span style=color:#e6db74>&#34;https://github.com/eza-community/eza/releases/download/v</span><span style=color:#e6db74>${</span>EZA_VERSION<span style=color:#e6db74>}</span><span style=color:#e6db74>/eza_</span><span style=color:#e6db74>${</span>ARCH<span style=color:#e6db74>}</span><span style=color:#e6db74>-unknown-linux-gnu.tar.gz&#34;</span> | sudo tar xz -C /usr/local/bin/
+</span></span></code></pre></div><h3 id=install-oh-my-zsh>Install Oh My Zsh</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sh -c <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span></code></pre></div><p>It will ask if you want to change your default shell to Zsh. Say yes.</p><h3 id=install-powerlevel10k-and-the-plugins>Install Powerlevel10k and the plugins</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>git clone --depth<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> https://github.com/romkatv/powerlevel10k.git <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>  ~/.oh-my-zsh/custom/themes/powerlevel10k
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>git clone --depth<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> https://github.com/zsh-users/zsh-autosuggestions <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>  ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>git clone --depth<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> https://github.com/zsh-users/zsh-syntax-highlighting <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>  ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>git clone --depth<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> https://github.com/zsh-users/zsh-completions <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>  ~/.oh-my-zsh/custom/plugins/zsh-completions
+</span></span></code></pre></div><h3 id=configure-zshrc>Configure .zshrc</h3><p>Back up your current config first:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cp ~/.zshrc ~/.zshrc.bak
+</span></span></code></pre></div><p>Then replace it. Open <code>~/.zshrc</code> in your editor and paste the full config below. It is long, but every section is commented so you know what each part does.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Powerlevel10k instant prompt (keep at the very top)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -r <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>XDG_CACHE_HOME<span style=color:#66d9ef>:-</span>$HOME/.cache<span style=color:#e6db74>}</span><span style=color:#e6db74>/p10k-instant-prompt-</span><span style=color:#e6db74>${</span>(%)<span style=color:#66d9ef>:-</span>%n<span style=color:#e6db74>}</span><span style=color:#e6db74>.zsh&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>  source <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>XDG_CACHE_HOME<span style=color:#66d9ef>:-</span>$HOME/.cache<span style=color:#e6db74>}</span><span style=color:#e6db74>/p10k-instant-prompt-</span><span style=color:#e6db74>${</span>(%)<span style=color:#66d9ef>:-</span>%n<span style=color:#e6db74>}</span><span style=color:#e6db74>.zsh&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Oh My Zsh config</span>
+</span></span><span style=display:flex><span>export ZSH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$HOME<span style=color:#e6db74>/.oh-my-zsh&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;powerlevel10k/powerlevel10k&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>plugins<span style=color:#f92672>=(</span>
+</span></span><span style=display:flex><span>    git
+</span></span><span style=display:flex><span>    sudo
+</span></span><span style=display:flex><span>    command-not-found
+</span></span><span style=display:flex><span>    colored-man-pages
+</span></span><span style=display:flex><span>    zsh-autosuggestions
+</span></span><span style=display:flex><span>    zsh-syntax-highlighting
+</span></span><span style=display:flex><span>    zsh-completions
+</span></span><span style=display:flex><span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>fpath<span style=color:#f92672>+=</span><span style=color:#e6db74>${</span>ZSH_CUSTOM<span style=color:#66d9ef>:-</span><span style=color:#e6db74>${</span>ZSH<span style=color:#66d9ef>:-</span>~/.oh-my-zsh<span style=color:#e6db74>}</span>/custom<span style=color:#e6db74>}</span>/plugins/zsh-completions/src
+</span></span><span style=display:flex><span>source <span style=color:#e6db74>&#34;</span>$ZSH<span style=color:#e6db74>/oh-my-zsh.sh&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Autosuggestions ──</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Subtle gray so suggestions don&#39;t compete with what you type</span>
+</span></span><span style=display:flex><span>ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;fg=#636e7b&#34;</span>
+</span></span><span style=display:flex><span>ZSH_AUTOSUGGEST_STRATEGY<span style=color:#f92672>=(</span>history completion<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Syntax highlighting colors ──</span>
+</span></span><span style=display:flex><span>typeset -A ZSH_HIGHLIGHT_STYLES
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>command<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=cyan,bold&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>builtin<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=cyan&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>alias<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=cyan,bold&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span><span style=color:#66d9ef>function</span><span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=cyan&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>unknown-token<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=red&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>path<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=green,underline&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>globbing<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=magenta&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>single-quoted-argument<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=yellow&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>double-quoted-argument<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=yellow&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>dollar-quoted-argument<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=yellow&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>comment<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=#636e7b&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>arg0<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=cyan,bold&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>default<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=#c0caf5&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>commandseparator<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=magenta&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>redirection<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=magenta&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>reserved-word<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=magenta,bold&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>single-hyphen-option<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=#7aa2f7&#39;</span>
+</span></span><span style=display:flex><span>ZSH_HIGHLIGHT_STYLES<span style=color:#f92672>[</span>double-hyphen-option<span style=color:#f92672>]=</span><span style=color:#e6db74>&#39;fg=#7aa2f7&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Modern CLI tool aliases ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># eza (modern ls)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> command -v eza &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    alias ls<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;eza --icons --group-directories-first&#39;</span>
+</span></span><span style=display:flex><span>    alias ll<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;eza -la --icons --group-directories-first --git --time-style=relative&#39;</span>
+</span></span><span style=display:flex><span>    alias lt<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;eza -la --icons --tree --level=2 --git&#39;</span>
+</span></span><span style=display:flex><span>    alias la<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;eza -a --icons --group-directories-first&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    alias ls<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;ls --color=auto&#39;</span>
+</span></span><span style=display:flex><span>    alias ll<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;ls -lah --color=auto&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># bat (modern cat)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> command -v bat &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    alias cat<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;bat --paging=never --style=plain&#39;</span>
+</span></span><span style=display:flex><span>    alias catn<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;bat --paging=never&#39;</span>
+</span></span><span style=display:flex><span>    alias catf<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;bat&#39;</span>
+</span></span><span style=display:flex><span>    export MANPAGER<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;sh -c &#39;col -bx | bat -l man -p&#39;&#34;</span>
+</span></span><span style=display:flex><span>    export BAT_THEME<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;TwoDark&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># fd (modern find)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> command -v fd &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    alias find<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;fd&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ripgrep (modern grep)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> command -v rg &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    alias grep<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;rg&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># fzf with Tokyo Night colors</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> command -v fzf &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> command -v fd &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        export FZF_DEFAULT_COMMAND<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;fd --type f --hidden --follow --exclude .git&#39;</span>
+</span></span><span style=display:flex><span>        export FZF_CTRL_T_COMMAND<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$FZF_DEFAULT_COMMAND<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>        export FZF_ALT_C_COMMAND<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;fd --type d --hidden --follow --exclude .git&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    export FZF_DEFAULT_OPTS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --height=40% --layout=reverse --border=rounded
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --color=bg+:#2a2e3f,bg:#1a1b26,spinner:#bb9af7,hl:#7aa2f7
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --color=fg:#c0caf5,header:#7aa2f7,info:#e0af68,pointer:#bb9af7
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --color=marker:#9ece6a,fg+:#c0caf5,prompt:#bb9af7,hl+:#7aa2f7
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --color=border:#3b4261
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[[</span> -f /usr/share/doc/fzf/examples/key-bindings.zsh <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>        source /usr/share/doc/fzf/examples/key-bindings.zsh
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[[</span> -f /usr/share/doc/fzf/examples/completion.zsh <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>        source /usr/share/doc/fzf/examples/completion.zsh
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Directory colors ──</span>
+</span></span><span style=display:flex><span>export LS_COLORS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;di=1;34:ln=36:so=35:pi=33:ex=1;32:bd=1;33:cd=1;33:su=1;31:sg=1;31:tw=1;34:ow=1;34:*.tar=31:*.gz=31:*.zip=31:*.7z=31:*.jpg=35:*.png=35:*.gif=35:*.svg=35:*.mp3=36:*.mp4=36:*.pdf=33:*.md=37:*.json=37:*.yml=37:*.yaml=37:*.conf=37:*.log=90:*.bak=90:*.tmp=90&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── History ──</span>
+</span></span><span style=display:flex><span>HISTSIZE<span style=color:#f92672>=</span><span style=color:#ae81ff>50000</span>
+</span></span><span style=display:flex><span>SAVEHIST<span style=color:#f92672>=</span><span style=color:#ae81ff>50000</span>
+</span></span><span style=display:flex><span>HISTFILE<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.zsh_history&#34;</span>
+</span></span><span style=display:flex><span>setopt HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_REDUCE_BLANKS
+</span></span><span style=display:flex><span>setopt SHARE_HISTORY HIST_VERIFY INC_APPEND_HISTORY
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Navigation ──</span>
+</span></span><span style=display:flex><span>setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_SILENT
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Completion styling ──</span>
+</span></span><span style=display:flex><span>zstyle <span style=color:#e6db74>&#39;:completion:*&#39;</span> menu <span style=color:#66d9ef>select</span>
+</span></span><span style=display:flex><span>zstyle <span style=color:#e6db74>&#39;:completion:*&#39;</span> matcher-list <span style=color:#e6db74>&#39;m:{a-zA-Z}={A-Za-z}&#39;</span>
+</span></span><span style=display:flex><span>zstyle <span style=color:#e6db74>&#39;:completion:*&#39;</span> list-colors <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>(s.:.)LS_COLORS<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>zstyle <span style=color:#e6db74>&#39;:completion:*:descriptions&#39;</span> format <span style=color:#e6db74>&#39;%F{yellow}-- %d --%f&#39;</span>
+</span></span><span style=display:flex><span>zstyle <span style=color:#e6db74>&#39;:completion:*:warnings&#39;</span> format <span style=color:#e6db74>&#39;%F{red}-- no matches --%f&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Key bindings ──</span>
+</span></span><span style=display:flex><span>bindkey <span style=color:#e6db74>&#39;^[[A&#39;</span> history-search-backward
+</span></span><span style=display:flex><span>bindkey <span style=color:#e6db74>&#39;^[[B&#39;</span> history-search-forward
+</span></span><span style=display:flex><span>bindkey <span style=color:#e6db74>&#39;^[[3~&#39;</span> delete-char
+</span></span><span style=display:flex><span>bindkey <span style=color:#e6db74>&#39;^[[H&#39;</span> beginning-of-line
+</span></span><span style=display:flex><span>bindkey <span style=color:#e6db74>&#39;^[[F&#39;</span> end-of-line
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Handy aliases ──</span>
+</span></span><span style=display:flex><span>alias ..<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;cd ..&#39;</span>
+</span></span><span style=display:flex><span>alias ...<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;cd ../..&#39;</span>
+</span></span><span style=display:flex><span>alias mkdir<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;mkdir -pv&#39;</span>
+</span></span><span style=display:flex><span>alias df<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;df -h&#39;</span>
+</span></span><span style=display:flex><span>alias du<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;du -sh&#39;</span>
+</span></span><span style=display:flex><span>alias free<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;free -h&#39;</span>
+</span></span><span style=display:flex><span>alias ports<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;ss -tulnp&#39;</span>
+</span></span><span style=display:flex><span>alias myip<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;curl -s ifconfig.me &amp;&amp; echo&#39;</span>
+</span></span><span style=display:flex><span>alias reload<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;source ~/.zshrc &amp;&amp; echo &#34;Reloaded .zshrc&#34;&#39;</span>
+</span></span><span style=display:flex><span>alias rm<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;rm -I&#39;</span>
+</span></span><span style=display:flex><span>alias cp<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;cp -iv&#39;</span>
+</span></span><span style=display:flex><span>alias mv<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;mv -iv&#39;</span>
+</span></span><span style=display:flex><span>alias diff<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;diff --color=auto&#39;</span>
+</span></span><span style=display:flex><span>alias ip<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;ip -color=auto&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Quick git</span>
+</span></span><span style=display:flex><span>alias gs<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;git status -sb&#39;</span>
+</span></span><span style=display:flex><span>alias gl<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;git log --oneline --graph --decorate -20&#39;</span>
+</span></span><span style=display:flex><span>alias gd<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;git diff&#39;</span>
+</span></span><span style=display:flex><span>alias gds<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;git diff --staged&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Load Powerlevel10k config ──</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[[</span> -f ~/.p10k.zsh <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> source ~/.p10k.zsh
+</span></span></code></pre></div><h3 id=configure-the-prompt>Configure the Prompt</h3><p>The easiest way is to run the built-in wizard:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>p10k configure
+</span></span></code></pre></div><p>It walks you through a series of visual choices and builds the config for you. Pick the options you like and it writes <code>~/.p10k.zsh</code> automatically.</p><p>If you prefer a pre-made config that gives you a clean, minimal, two-line prompt with full git info, you can grab the one from the install script instead. The key things it sets up:</p><ul><li>Left side: OS icon, current directory, git status</li><li>Right side: last command exit code, execution time, user@host (only in SSH), time</li><li>Branch name in green when clean, amber when dirty, red on conflicts</li><li>Ahead/behind arrows for push/pull status</li><li>Staged, unstaged, and untracked file counts</li><li>Previous prompts collapse to a simple arrow to save screen space</li></ul><h2 id=step-6-log-out-and-back-in>Step 6: Log Out and Back In</h2><p>Close your SSH session and reconnect. Your new shell should greet you with a clean, colorful prompt. If you see little boxes instead of icons, go back to Step 2 and make sure the Nerd Font is installed on your <strong>local machine</strong> and set in your terminal app.</p><h2 id=daily-workflow>Daily Workflow</h2><p>Here is what changes in your day-to-day work.</p><p><strong>Navigating files:</strong> Just type <code>ls</code> and you get colored output with icons for each file type, directories grouped at the top. Type <code>ll</code> for a detailed view with git status per file and relative timestamps like &ldquo;2 hours ago&rdquo; instead of raw dates. Type <code>lt</code> for a tree view.</p><p><strong>Reading files:</strong> <code>cat</code> now shows syntax-highlighted output. If you want line numbers, use <code>catn</code>. For the full pager experience with header and line numbers, use <code>catf</code>.</p><p><strong>Finding things:</strong> Press <code>Ctrl+R</code> for fuzzy search through your command history. Press <code>Ctrl+T</code> for fuzzy file search. Both use a nice floating popup with the same color scheme.</p><p><strong>Git repos:</strong> The moment you <code>cd</code> into a git repo, the prompt shows the branch name. Make some changes and you immediately see counts for staged, unstaged, and untracked files. The color shifts from green to amber. If you are behind the remote, you see a down arrow with the commit count.</p><p><strong>Typo catching:</strong> As you type a command, it appears in cyan if it is valid. If you mistype something, it turns red before you even press Enter.</p><p><strong>History suggestions:</strong> Start typing a command you&rsquo;ve used before and a dim suggestion appears. Press the right arrow to accept it. This alone saves a huge amount of typing over a day.</p><p><strong>Sudo shortcut:</strong> Forgot to type sudo? Press Escape twice and it gets prepended automatically.</p><h2 id=quick-reference>Quick Reference</h2><table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>ll</code></td><td>Detailed file list with git status and relative timestamps</td></tr><tr><td><code>lt</code></td><td>Tree view, two levels deep</td></tr><tr><td><code>gs</code></td><td>Short git status</td></tr><tr><td><code>gl</code></td><td>Pretty git log, last 20 commits with graph</td></tr><tr><td><code>catf some-file</code></td><td>View file with syntax highlighting and line numbers</td></tr><tr><td><code>Ctrl+R</code></td><td>Fuzzy search command history</td></tr><tr><td><code>Ctrl+T</code></td><td>Fuzzy search files</td></tr><tr><td><code>reload</code></td><td>Reload .zshrc after editing it</td></tr><tr><td><code>p10k configure</code></td><td>Re-run the prompt wizard</td></tr><tr><td><code>ESC ESC</code></td><td>Prepend sudo to current command</td></tr></tbody></table><h2 id=troubleshooting>Troubleshooting</h2><p><strong>Icons are broken (boxes or question marks):</strong> The Nerd Font is not installed on your local machine, or your terminal is not using it. Check your terminal&rsquo;s font settings.</p><p><strong>Colors look washed out:</strong> Your terminal does not support true color. This is the PuTTY problem. Switch to Windows Terminal or Alacritty.</p><p><strong>Prompt is slow in very large git repos:</strong> Powerlevel10k is fast, but repos with millions of files can still lag. Add this to your <code>~/.p10k.zsh</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>typeset -g POWERLEVEL9K_VCS_MAX_INDEX_SIZE_DIRTY<span style=color:#f92672>=</span><span style=color:#ae81ff>10000</span>
+</span></span></code></pre></div><p><strong>Want to go back to bash:</strong> Your old <code>.bashrc</code> is untouched. Just run:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>chsh -s /bin/bash
+</span></span></code></pre></div><p>That is the whole setup. It takes about 10 minutes to go through and the difference is night and day. Your terminal goes from a wall of white text on black to something that actually communicates useful information through color and structure, without you having to think about it.</p><h2 id=the-lazy-way>The Lazy Way</h2><p>If you don&rsquo;t want to go through all the steps manually, here is the complete
+install script that does everything in one go. Upload it to your server, make
+it executable with <code>chmod +x terminal-glow.sh</code>, and run it with
+<code>sudo bash terminal-glow.sh</code>.</p><p><strong>A word of caution though.</strong> Never blindly paste scripts from the internet
+into your terminal. Not this one, not any other. Take a few minutes to read
+through it first and understand what it does. A single script running with sudo
+has full control over your system. Trust, but verify.</p><p>You can grab the full installer script below and upload it to your server.</p><details><summary>terminal-glow.sh (click to expand)</summary><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e># ============================================================================</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#  terminal-glow.sh (v1.1 - fixed)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#  Transform a boring black-and-white terminal into something you actually</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#  enjoy staring at for 10 hours a day.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#  What this installs:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - Zsh (shell)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - Oh My Zsh (framework)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - Powerlevel10k (theme with gorgeous git integration)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - zsh-autosuggestions (ghost-text history suggestions as you type)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - zsh-syntax-highlighting (live red/green feedback on commands)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - eza (modern ls replacement with colors and icons)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - bat (modern cat replacement with syntax highlighting)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - fd-find (modern find replacement)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - ripgrep (modern grep replacement)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - fzf (fuzzy finder for everything)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - Custom .zshrc with a hand-tuned aesthetic config</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    - Pre-configured Powerlevel10k prompt (no wizard needed)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#  Tested on: Ubuntu 22.04 / 24.04 / 26.04, Debian 11/12</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#  Usage:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    As your normal user with sudo access:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#      ./terminal-glow.sh</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#    Or with sudo (will configure for the invoking user, not root):</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#      sudo ./terminal-glow.sh</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ============================================================================</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>set -euo pipefail
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>R<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;\033[0;31m&#39;</span>   G<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;\033[0;32m&#39;</span>   Y<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;\033[0;33m&#39;</span>
+</span></span><span style=display:flex><span>B<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;\033[0;34m&#39;</span>   M<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;\033[0;35m&#39;</span>   C<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;\033[0;36m&#39;</span>
+</span></span><span style=display:flex><span>W<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;\033[1;37m&#39;</span>   DIM<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;\033[2m&#39;</span>    RESET<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;\033[0m&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -n <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>SUDO_USER<span style=color:#66d9ef>:-</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    TARGET_USER<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$SUDO_USER<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>elif</span> <span style=color:#f92672>[[</span> $EUID -eq <span style=color:#ae81ff>0</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    TARGET_USER<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;root&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    TARGET_USER<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$USER<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>TARGET_HOME<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>eval echo <span style=color:#e6db74>&#34;~</span><span style=color:#e6db74>${</span>TARGET_USER<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>TARGET_GROUP<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>id -gn <span style=color:#e6db74>&#34;</span>$TARGET_USER<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>banner<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    echo -e <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>  ╔══════════════════════════════════════════════╗</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    echo -e <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>  ║</span><span style=color:#e6db74>${</span>W<span style=color:#e6db74>}</span><span style=color:#e6db74>      terminal-glow installer v1.1 (fixed)    </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>║</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    echo -e <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>  ║</span><span style=color:#e6db74>${</span>DIM<span style=color:#e6db74>}</span><span style=color:#e6db74>     making your CLI beautiful since today    </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>║</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    echo -e <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>  ╚══════════════════════════════════════════════╝</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>info<span style=color:#f92672>()</span>    <span style=color:#f92672>{</span> echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>[i]</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> </span>$*<span style=color:#e6db74>&#34;</span>; <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>ok<span style=color:#f92672>()</span>      <span style=color:#f92672>{</span> echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>G<span style=color:#e6db74>}</span><span style=color:#e6db74>[✓]</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> </span>$*<span style=color:#e6db74>&#34;</span>; <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>warn<span style=color:#f92672>()</span>    <span style=color:#f92672>{</span> echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>Y<span style=color:#e6db74>}</span><span style=color:#e6db74>[!]</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> </span>$*<span style=color:#e6db74>&#34;</span>; <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>fail<span style=color:#f92672>()</span>    <span style=color:#f92672>{</span> echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>R<span style=color:#e6db74>}</span><span style=color:#e6db74>[✗]</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> </span>$*<span style=color:#e6db74>&#34;</span>; exit 1; <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>step<span style=color:#f92672>()</span>    <span style=color:#f92672>{</span> echo -e <span style=color:#e6db74>&#34;\n  </span><span style=color:#e6db74>${</span>M<span style=color:#e6db74>}</span><span style=color:#e6db74>───</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> </span><span style=color:#e6db74>${</span>W<span style=color:#e6db74>}</span>$*<span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> </span><span style=color:#e6db74>${</span>M<span style=color:#e6db74>}</span><span style=color:#e6db74>───</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>; <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>run_as_user<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $EUID -eq <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#e6db74>&#34;</span>$TARGET_USER<span style=color:#e6db74>&#34;</span> !<span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;root&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        su - <span style=color:#e6db74>&#34;</span>$TARGET_USER<span style=color:#e6db74>&#34;</span> -s /bin/bash -c <span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        bash -c <span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>banner
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>info <span style=color:#e6db74>&#34;Target user:  </span><span style=color:#e6db74>${</span>W<span style=color:#e6db74>}${</span>TARGET_USER<span style=color:#e6db74>}${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>info <span style=color:#e6db74>&#34;Home dir:     </span><span style=color:#e6db74>${</span>W<span style=color:#e6db74>}${</span>TARGET_HOME<span style=color:#e6db74>}${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $EUID -eq <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> -z <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>SUDO_USER<span style=color:#66d9ef>:-</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    warn <span style=color:#e6db74>&#34;Running as root directly. Config will be placed in /root.&#34;</span>
+</span></span><span style=display:flex><span>    warn <span style=color:#e6db74>&#34;If you want this for a regular user, run:  sudo ./terminal-glow.sh&#34;</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    read -rp <span style=color:#e6db74>&#34;  Continue as root? [y/N] &#34;</span> ans
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[[</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>ans,,<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;y&#34;</span> <span style=color:#f92672>]]</span> <span style=color:#f92672>||</span> exit <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[[</span> -d <span style=color:#e6db74>&#34;</span>$TARGET_HOME<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span> <span style=color:#f92672>||</span> fail <span style=color:#e6db74>&#34;Home directory </span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74> does not exist.&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Step 1: System packages ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>step <span style=color:#e6db74>&#34;Installing system packages&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SUDO<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[[</span> $EUID -ne <span style=color:#ae81ff>0</span> <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> SUDO<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;sudo&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>$SUDO apt-get update -qq
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>PACKAGES<span style=color:#f92672>=(</span>zsh git curl wget unzip fontconfig bat fd-find ripgrep fzf<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> apt-cache show eza &amp;&gt;/dev/null 2&gt;&amp;1; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    PACKAGES<span style=color:#f92672>+=(</span>eza<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    EZA_FROM_APT<span style=color:#f92672>=</span>true
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    EZA_FROM_APT<span style=color:#f92672>=</span>false
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>$SUDO apt-get install -y -qq <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>PACKAGES[@]<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> 2&gt;/dev/null
+</span></span><span style=display:flex><span>ok <span style=color:#e6db74>&#34;System packages installed&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> command -v batcat &amp;&gt;/dev/null <span style=color:#f92672>&amp;&amp;</span> ! command -v bat &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    $SUDO ln -sf <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>command -v batcat<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> /usr/local/bin/bat
+</span></span><span style=display:flex><span>    ok <span style=color:#e6db74>&#34;Created &#39;bat&#39; symlink (was batcat)&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> command -v fdfind &amp;&gt;/dev/null <span style=color:#f92672>&amp;&amp;</span> ! command -v fd &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    $SUDO ln -sf <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>command -v fdfind<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> /usr/local/bin/fd
+</span></span><span style=display:flex><span>    ok <span style=color:#e6db74>&#34;Created &#39;fd&#39; symlink (was fdfind)&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> <span style=color:#e6db74>&#34;</span>$EZA_FROM_APT<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>==</span> false <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> ! command -v eza &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    info <span style=color:#e6db74>&#34;eza not in repos, installing from GitHub release...&#34;</span>
+</span></span><span style=display:flex><span>    EZA_VERSION<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>curl -s https://api.github.com/repos/eza-community/eza/releases/latest <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>        | grep <span style=color:#e6db74>&#39;&#34;tag_name&#34;&#39;</span> | head -1 | sed -E <span style=color:#e6db74>&#39;s/.*&#34;v([^&#34;]+)&#34;.*/\1/&#39;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -n <span style=color:#e6db74>&#34;</span>$EZA_VERSION<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        ARCH<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>dpkg --print-architecture<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>        curl -sL <span style=color:#e6db74>&#34;https://github.com/eza-community/eza/releases/download/v</span><span style=color:#e6db74>${</span>EZA_VERSION<span style=color:#e6db74>}</span><span style=color:#e6db74>/eza_</span><span style=color:#e6db74>${</span>ARCH<span style=color:#e6db74>}</span><span style=color:#e6db74>-unknown-linux-gnu.tar.gz&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            | $SUDO tar xz -C /usr/local/bin/
+</span></span><span style=display:flex><span>        ok <span style=color:#e6db74>&#34;eza </span><span style=color:#e6db74>${</span>EZA_VERSION<span style=color:#e6db74>}</span><span style=color:#e6db74> installed&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        warn <span style=color:#e6db74>&#34;Could not fetch eza version, skipping&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Step 2: Oh My Zsh ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>step <span style=color:#e6db74>&#34;Installing Oh My Zsh&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>OMZ_DIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.oh-my-zsh&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -d <span style=color:#e6db74>&#34;</span>$OMZ_DIR<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>&amp;&amp;</span> -f <span style=color:#e6db74>&#34;</span>$OMZ_DIR<span style=color:#e6db74>/oh-my-zsh.sh&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    ok <span style=color:#e6db74>&#34;Oh My Zsh already installed at </span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[[</span> -d <span style=color:#e6db74>&#34;</span>$OMZ_DIR<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> rm -rf <span style=color:#e6db74>&#34;</span>$OMZ_DIR<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    info <span style=color:#e6db74>&#34;Installing Oh My Zsh for </span><span style=color:#e6db74>${</span>TARGET_USER<span style=color:#e6db74>}</span><span style=color:#e6db74>...&#34;</span>
+</span></span><span style=display:flex><span>    run_as_user <span style=color:#e6db74>&#34;export ZSH=&#39;</span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39; &amp;&amp; export RUNZSH=no &amp;&amp; export CHSH=no &amp;&amp; \
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        sh -c \&#34;\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\&#34; \&#34;\&#34; --unattended&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -f <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>/oh-my-zsh.sh&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        ok <span style=color:#e6db74>&#34;Oh My Zsh installed at </span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        fail <span style=color:#e6db74>&#34;Oh My Zsh installation failed. </span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>/oh-my-zsh.sh not found.&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Step 3: Powerlevel10k ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>step <span style=color:#e6db74>&#34;Installing Powerlevel10k theme&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>P10K_DIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>/custom/themes/powerlevel10k&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -d <span style=color:#e6db74>&#34;</span>$P10K_DIR<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>&amp;&amp;</span> -f <span style=color:#e6db74>&#34;</span>$P10K_DIR<span style=color:#e6db74>/powerlevel10k.zsh-theme&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    ok <span style=color:#e6db74>&#34;Powerlevel10k already installed, pulling latest...&#34;</span>
+</span></span><span style=display:flex><span>    run_as_user <span style=color:#e6db74>&#34;git -C &#39;</span><span style=color:#e6db74>${</span>P10K_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39; pull -q 2&gt;/dev/null || true&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[[</span> -d <span style=color:#e6db74>&#34;</span>$P10K_DIR<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> rm -rf <span style=color:#e6db74>&#34;</span>$P10K_DIR<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    run_as_user <span style=color:#e6db74>&#34;git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &#39;</span><span style=color:#e6db74>${</span>P10K_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -f <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>P10K_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>/powerlevel10k.zsh-theme&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        ok <span style=color:#e6db74>&#34;Powerlevel10k installed&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        fail <span style=color:#e6db74>&#34;Powerlevel10k clone failed.&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Step 4: Zsh plugins ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>step <span style=color:#e6db74>&#34;Installing Zsh plugins&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>CUSTOM_PLUGINS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>/custom/plugins&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>install_plugin<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    local name<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span> repo<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$2<span style=color:#e6db74>&#34;</span> dir<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>CUSTOM_PLUGINS<span style=color:#e6db74>}</span><span style=color:#e6db74>/</span><span style=color:#e6db74>${</span>1<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -d <span style=color:#e6db74>&#34;</span>$dir<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>ls -A <span style=color:#e6db74>&#34;</span>$dir<span style=color:#e6db74>&#34;</span> 2&gt;/dev/null<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        ok <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>name<span style=color:#e6db74>}</span><span style=color:#e6db74> already present&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>[[</span> -d <span style=color:#e6db74>&#34;</span>$dir<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> rm -rf <span style=color:#e6db74>&#34;</span>$dir<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>        run_as_user <span style=color:#e6db74>&#34;git clone --depth=1 &#39;</span><span style=color:#e6db74>${</span>repo<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39; &#39;</span><span style=color:#e6db74>${</span>dir<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -d <span style=color:#e6db74>&#34;</span>$dir<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>ls -A <span style=color:#e6db74>&#34;</span>$dir<span style=color:#e6db74>&#34;</span> 2&gt;/dev/null<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>            ok <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>name<span style=color:#e6db74>}</span><span style=color:#e6db74> installed&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>            warn <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>name<span style=color:#e6db74>}</span><span style=color:#e6db74> clone failed. Install manually later.&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>install_plugin <span style=color:#e6db74>&#34;zsh-autosuggestions&#34;</span>     <span style=color:#e6db74>&#34;https://github.com/zsh-users/zsh-autosuggestions&#34;</span>
+</span></span><span style=display:flex><span>install_plugin <span style=color:#e6db74>&#34;zsh-syntax-highlighting&#34;</span> <span style=color:#e6db74>&#34;https://github.com/zsh-users/zsh-syntax-highlighting&#34;</span>
+</span></span><span style=display:flex><span>install_plugin <span style=color:#e6db74>&#34;zsh-completions&#34;</span>         <span style=color:#e6db74>&#34;https://github.com/zsh-users/zsh-completions&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Step 5: Nerd Font ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>step <span style=color:#e6db74>&#34;Installing Nerd Font (JetBrains Mono)&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>FONT_DIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.local/share/fonts&#34;</span>
+</span></span><span style=display:flex><span>mkdir -p <span style=color:#e6db74>&#34;</span>$FONT_DIR<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> ls <span style=color:#e6db74>&#34;</span>$FONT_DIR<span style=color:#e6db74>&#34;</span>/JetBrains*.ttf &amp;&gt;/dev/null 2&gt;&amp;1; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    ok <span style=color:#e6db74>&#34;JetBrains Mono Nerd Font already installed&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    info <span style=color:#e6db74>&#34;Downloading JetBrains Mono Nerd Font...&#34;</span>
+</span></span><span style=display:flex><span>    TMPDIR_FONT<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>mktemp -d<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> curl -sL <span style=color:#e6db74>&#34;https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>        | tar xJ -C <span style=color:#e6db74>&#34;</span>$TMPDIR_FONT<span style=color:#e6db74>&#34;</span> 2&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        cp <span style=color:#e6db74>&#34;</span>$TMPDIR_FONT<span style=color:#e6db74>&#34;</span>/*.ttf <span style=color:#e6db74>&#34;</span>$FONT_DIR<span style=color:#e6db74>/&#34;</span> 2&gt;/dev/null <span style=color:#f92672>||</span> true
+</span></span><span style=display:flex><span>        fc-cache -f <span style=color:#e6db74>&#34;</span>$FONT_DIR<span style=color:#e6db74>&#34;</span> 2&gt;/dev/null
+</span></span><span style=display:flex><span>        ok <span style=color:#e6db74>&#34;JetBrains Mono Nerd Font installed&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        warn <span style=color:#e6db74>&#34;Font download failed. Install manually from https://www.nerdfonts.com/font-downloads&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    rm -rf <span style=color:#e6db74>&#34;</span>$TMPDIR_FONT<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Step 6: Write .zshrc ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>step <span style=color:#e6db74>&#34;Configuring .zshrc&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ZSHRC<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.zshrc&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -f <span style=color:#e6db74>&#34;</span>$ZSHRC<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    cp <span style=color:#e6db74>&#34;</span>$ZSHRC<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>ZSHRC<span style=color:#e6db74>}</span><span style=color:#e6db74>.bak.</span><span style=color:#66d9ef>$(</span>date +%Y%m%d%H%M%S<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    ok <span style=color:#e6db74>&#34;Backed up existing .zshrc&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>cat &gt; <span style=color:#e6db74>&#34;</span>$ZSHRC<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&lt;&lt; &#39;ZSHRC_EOF&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74># ============================================================================
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>#  .zshrc - terminal-glow configuration
+</span></span></span><span style=display:flex><span><span style=color:#e6db74># ============================================================================
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>if [[ -r &#34;${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh&#34; ]]; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  source &#34;${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>export ZSH=&#34;$HOME/.oh-my-zsh&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_THEME=&#34;powerlevel10k/powerlevel10k&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>zstyle &#39;:omz:update&#39; mode reminder
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>zstyle &#39;:omz:update&#39; frequency 14
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>plugins=(
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    git
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    sudo
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    command-not-found
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    colored-man-pages
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    zsh-autosuggestions
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    zsh-syntax-highlighting
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    zsh-completions
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>source &#34;$ZSH/oh-my-zsh.sh&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74># ── Autosuggestions ──
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=&#34;fg=#636e7b&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74># ── Syntax highlighting colors ──
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>typeset -A ZSH_HIGHLIGHT_STYLES
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[command]=&#39;fg=cyan,bold&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[builtin]=&#39;fg=cyan&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[alias]=&#39;fg=cyan,bold&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[function]=&#39;fg=cyan&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[unknown-token]=&#39;fg=red&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[path]=&#39;fg=green,underline&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[globbing]=&#39;fg=magenta&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=&#39;fg=yellow&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=&#39;fg=yellow&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]=&#39;fg=yellow&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[comment]=&#39;fg=#636e7b&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[arg0]=&#39;fg=cyan,bold&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[default]=&#39;fg=#c0caf5&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[commandseparator]=&#39;fg=magenta&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[redirection]=&#39;fg=magenta&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[reserved-word]=&#39;fg=magenta,bold&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=&#39;fg=#7aa2f7&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=&#39;fg=#7aa2f7&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74># ── Modern CLI aliases ──
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>if command -v eza &amp;&gt;/dev/null; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias ls=&#39;eza --icons --group-directories-first&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias ll=&#39;eza -la --icons --group-directories-first --git --time-style=relative&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias lt=&#39;eza -la --icons --tree --level=2 --git&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias la=&#39;eza -a --icons --group-directories-first&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias l=&#39;eza --icons --group-directories-first&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>else
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias ls=&#39;ls --color=auto&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias ll=&#39;ls -lah --color=auto&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias la=&#39;ls -a --color=auto&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>if command -v bat &amp;&gt;/dev/null; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias cat=&#39;bat --paging=never --style=plain&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias catn=&#39;bat --paging=never&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias catf=&#39;bat&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    export MANPAGER=&#34;sh -c &#39;col -bx | bat -l man -p&#39;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    export BAT_THEME=&#34;TwoDark&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>if command -v fd &amp;&gt;/dev/null; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias find=&#39;fd&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>if command -v rg &amp;&gt;/dev/null; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    alias grep=&#39;rg&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>if command -v fzf &amp;&gt;/dev/null; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    if command -v fd &amp;&gt;/dev/null; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        export FZF_DEFAULT_COMMAND=&#39;fd --type f --hidden --follow --exclude .git&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        export FZF_CTRL_T_COMMAND=&#34;$FZF_DEFAULT_COMMAND&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        export FZF_ALT_C_COMMAND=&#39;fd --type d --hidden --follow --exclude .git&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    export FZF_DEFAULT_OPTS=&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --height=40% --layout=reverse --border=rounded
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --margin=0,1 --padding=0,1 --info=inline
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --prompt=&#39;  &#39; --pointer=&#39;▶&#39; --marker=&#39;✓&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --color=bg+:#2a2e3f,bg:#1a1b26,spinner:#bb9af7,hl:#7aa2f7
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --color=fg:#c0caf5,header:#7aa2f7,info:#e0af68,pointer:#bb9af7
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --color=marker:#9ece6a,fg+:#c0caf5,prompt:#bb9af7,hl+:#7aa2f7
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        --color=border:#3b4261
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]] &amp;&amp; source /usr/share/doc/fzf/examples/key-bindings.zsh
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    [[ -f /usr/share/doc/fzf/examples/completion.zsh ]] &amp;&amp; source /usr/share/doc/fzf/examples/completion.zsh
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74># ── Quality of life ──
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>export LS_COLORS=&#34;di=1;34:ln=36:so=35:pi=33:ex=1;32:bd=1;33:cd=1;33:su=1;31:sg=1;31:tw=1;34:ow=1;34:*.tar=31:*.gz=31:*.zip=31:*.7z=31:*.deb=31:*.rpm=31:*.jpg=35:*.png=35:*.gif=35:*.svg=35:*.mp3=36:*.mp4=36:*.mkv=36:*.pdf=33:*.doc=33:*.md=37:*.json=37:*.yml=37:*.yaml=37:*.toml=37:*.conf=37:*.log=90:*.bak=90:*.old=90:*.tmp=90&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>HISTSIZE=50000
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>SAVEHIST=50000
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>HISTFILE=&#34;${HOME}/.zsh_history&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>setopt HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_REDUCE_BLANKS
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>setopt SHARE_HISTORY HIST_VERIFY INC_APPEND_HISTORY
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_SILENT
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>zstyle &#39;:completion:*&#39; menu select
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>zstyle &#39;:completion:*&#39; matcher-list &#39;m:{a-zA-Z}={A-Za-z}&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>zstyle &#39;:completion:*&#39; list-colors &#34;${(s.:.)LS_COLORS}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>zstyle &#39;:completion:*&#39; special-dirs true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>zstyle &#39;:completion:*:descriptions&#39; format &#39;%F{yellow}-- %d --%f&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>zstyle &#39;:completion:*:messages&#39; format &#39;%F{purple}-- %d --%f&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>zstyle &#39;:completion:*:warnings&#39; format &#39;%F{red}-- no matches --%f&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>bindkey &#39;^[[A&#39; history-search-backward
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>bindkey &#39;^[[B&#39; history-search-forward
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>bindkey &#39;^[[3~&#39; delete-char
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>bindkey &#39;^[[H&#39; beginning-of-line
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>bindkey &#39;^[[F&#39; end-of-line
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias ..=&#39;cd ..&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias ...=&#39;cd ../..&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias ....=&#39;cd ../../..&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias mkdir=&#39;mkdir -pv&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias df=&#39;df -h&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias du=&#39;du -sh&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias free=&#39;free -h&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias ports=&#39;ss -tulnp&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias myip=&#39;curl -s ifconfig.me &amp;&amp; echo&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias reload=&#39;source ~/.zshrc &amp;&amp; echo &#34;Reloaded .zshrc&#34;&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias cls=&#39;clear&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias diff=&#39;diff --color=auto&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias ip=&#39;ip -color=auto&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias dmesg=&#39;dmesg --color=auto&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias rm=&#39;rm -I&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias cp=&#39;cp -iv&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias mv=&#39;mv -iv&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias gs=&#39;git status -sb&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias gl=&#39;git log --oneline --graph --decorate -20&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias gd=&#39;git diff&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>alias gds=&#39;git diff --staged&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>[[ -f ~/.p10k.zsh ]] &amp;&amp; source ~/.p10k.zsh
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ZSHRC_EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ok <span style=color:#e6db74>&#34;.zshrc written&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Step 7: Powerlevel10k config ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>step <span style=color:#e6db74>&#34;Writing Powerlevel10k prompt configuration&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>cat &gt; <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.p10k.zsh&#34;</span> <span style=color:#e6db74>&lt;&lt; &#39;P10K_EOF&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>() {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  emulate -L zsh -o extended_glob
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  unset -m &#39;(POWERLEVEL9K_*|DEFAULT_USER)~POWERLEVEL9K_GITSTATUS_DIR&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_MODE=&#39;nerdfont-v3&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_ICON_PADDING=moderate
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs prompt_char)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_jobs context virtualenv node_version time)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_PROMPT_CHAR_OK_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=76
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=196
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION=&#39;❯&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION=&#39;❮&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION=&#39;V&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION=&#39;▶&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_PROMPT_CHAR_OVERWRITE_STATE=true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_PROMPT_CHAR_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=&#39;&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_PROMPT_CHAR_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=7
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=&#39;${P9K_CONTENT}&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_FOREGROUND=31
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=103
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=39
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_TRUNCATE_BEFORE_MARKER=false
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=60
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_MIN_COMMAND_COLUMNS=40
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_MIN_COMMAND_COLUMNS_PCT=50
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_HYPERLINK=false
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_SHOW_WRITABLE=v3
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND=203
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_DIR_CLASSES=()
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=&#39; &#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=&#39;?&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=76
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=178
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=39
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_CONFLICTED_FOREGROUND=196
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_LOADING_FOREGROUND=244
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_MAX_INDEX_SIZE_DIRTY=-1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_{STAGED,UNSTAGED,UNTRACKED,CONFLICTED,COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=-1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_EXPANSION=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION=&#39;${$((my_git_formatter(1)))+${my_git_format}}&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_LOADING_CONTENT_EXPANSION=&#39;${$((my_git_formatter(0)))+${my_git_format}}&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VCS_{CLEAN,MODIFIED,UNTRACKED,CONFLICTED,LOADING}_CONTENT_EXPANSION=&#39;${$((my_git_formatter($1)))+${my_git_format}}&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  function my_git_formatter() {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    emulate -L zsh
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    if [[ -n $P9K_CONTENT ]]; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      typeset -g my_git_format=$P9K_CONTENT
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      return
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    local clean=&#39;%76F&#39; modified=&#39;%178F&#39; untracked=&#39;%39F&#39; conflicted=&#39;%196F&#39; meta=&#39;%244F&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    local res
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      local branch=${(V)VCS_STATUS_LOCAL_BRANCH}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      (( $#branch &gt; 32 )) &amp;&amp; branch[13,-13]=&#34;…&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      res+=&#34;${clean} ${branch//\%/%%}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    elif [[ -n $VCS_STATUS_TAG ]]; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      local tag=${(V)VCS_STATUS_TAG}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      (( $#tag &gt; 32 )) &amp;&amp; tag[13,-13]=&#34;…&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      res+=&#34;${meta}#${tag//\%/%%}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    else
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      res+=&#34;${meta}@${VCS_STATUS_COMMIT[1,8]}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    [[ -n ${VCS_STATUS_REMOTE_BRANCH:#$VCS_STATUS_LOCAL_BRANCH} ]] &amp;&amp; res+=&#34;${meta}:${(V)VCS_STATUS_REMOTE_BRANCH//\%/%%}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    (( VCS_STATUS_COMMITS_BEHIND )) &amp;&amp; res+=&#34; ${clean}⇣${VCS_STATUS_COMMITS_BEHIND}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    (( VCS_STATUS_COMMITS_AHEAD &amp;&amp; !VCS_STATUS_COMMITS_BEHIND )) &amp;&amp; res+=&#34; &#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    (( VCS_STATUS_COMMITS_AHEAD )) &amp;&amp; res+=&#34;${clean}⇡${VCS_STATUS_COMMITS_AHEAD}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    (( VCS_STATUS_STASHES )) &amp;&amp; res+=&#34; ${clean}*${VCS_STATUS_STASHES}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    [[ -n $VCS_STATUS_ACTION ]] &amp;&amp; res+=&#34; ${conflicted}${VCS_STATUS_ACTION}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    (( VCS_STATUS_NUM_CONFLICTED )) &amp;&amp; res+=&#34; ${conflicted}~${VCS_STATUS_NUM_CONFLICTED}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    (( VCS_STATUS_NUM_STAGED )) &amp;&amp; res+=&#34; ${modified}+${VCS_STATUS_NUM_STAGED}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    (( VCS_STATUS_NUM_UNSTAGED )) &amp;&amp; res+=&#34; ${modified}!${VCS_STATUS_NUM_UNSTAGED}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    if (( $1 )); then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      (( VCS_STATUS_NUM_UNTRACKED )) &amp;&amp; res+=&#34; ${untracked}?${VCS_STATUS_NUM_UNTRACKED}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    else
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      (( VCS_STATUS_HAS_UNTRACKED )) &amp;&amp; res+=&#34; ${untracked}?&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    fi
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    typeset -g my_git_format=$res
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  functions -M my_git_formatter 2&gt;/dev/null
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_EXTENDED_STATES=true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_OK=false
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_OK_PIPE=true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_ERROR=true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=9
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_EXPANSION=&#39;✘&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL=true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=9
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_VERBOSE_SIGNAME=false
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_VISUAL_IDENTIFIER_EXPANSION=&#39;✘&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE=true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=9
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_VISUAL_IDENTIFIER_EXPANSION=&#39;✘&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=101
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT=&#39;d h m s&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_VISUAL_IDENTIFIER_EXPANSION=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=37
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION=&#39;⚙&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_CONTENT_EXPANSION=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=178
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_CONTENT_EXPANSION=&#39;%n@%m&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND=180
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE=&#39;%n@%m&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=37
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_WITH_PYENV=false
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_NODE_VERSION_FOREGROUND=70
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_TIME_FOREGROUND=66
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_TIME_FORMAT=&#39;%D{%H:%M}&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=false
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=&#39; &#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=&#39; &#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=&#39;&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=&#39;&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=&#39;&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL=&#39;&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=&#39;&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL=&#39;&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_EMPTY_LINE_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_BACKGROUND=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_{LEFT,RIGHT}_WHITESPACE=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SUBSEGMENT_SEPARATOR=&#39; &#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=always
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_INSTANT_PROMPT=verbose
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  typeset -g POWERLEVEL9K_TERM_SHELL_INTEGRATION=true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  (( ! $+functions[p10k] )) || p10k reload
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>(( ${#p10k_config_opts} )) &amp;&amp; setopt ${p10k_config_opts[@]}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#39;builtin&#39; &#39;unset&#39; &#39;p10k_config_opts&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>P10K_EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ok <span style=color:#e6db74>&#34;Powerlevel10k config written&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Step 8: Fix ownership ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>step <span style=color:#e6db74>&#34;Fixing file ownership&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>chown <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_USER<span style=color:#e6db74>}</span><span style=color:#e6db74>:</span><span style=color:#e6db74>${</span>TARGET_GROUP<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.zshrc&#34;</span>
+</span></span><span style=display:flex><span>chown <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_USER<span style=color:#e6db74>}</span><span style=color:#e6db74>:</span><span style=color:#e6db74>${</span>TARGET_GROUP<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.p10k.zsh&#34;</span>
+</span></span><span style=display:flex><span>chown -R <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_USER<span style=color:#e6db74>}</span><span style=color:#e6db74>:</span><span style=color:#e6db74>${</span>TARGET_GROUP<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[[</span> -d <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.local/share/fonts&#34;</span> <span style=color:#f92672>]]</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>    chown -R <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_USER<span style=color:#e6db74>}</span><span style=color:#e6db74>:</span><span style=color:#e6db74>${</span>TARGET_GROUP<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.local/share/fonts&#34;</span>
+</span></span><span style=display:flex><span>ok <span style=color:#e6db74>&#34;Ownership set to </span><span style=color:#e6db74>${</span>TARGET_USER<span style=color:#e6db74>}</span><span style=color:#e6db74>:</span><span style=color:#e6db74>${</span>TARGET_GROUP<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Step 9: Set Zsh as default shell ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>step <span style=color:#e6db74>&#34;Setting Zsh as default shell&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ZSH_PATH<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>command -v zsh<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>CURRENT_SHELL<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>getent passwd <span style=color:#e6db74>&#34;</span>$TARGET_USER<span style=color:#e6db74>&#34;</span> | cut -d: -f7<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> <span style=color:#e6db74>&#34;</span>$CURRENT_SHELL<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;</span>$ZSH_PATH<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    ok <span style=color:#e6db74>&#34;Zsh is already the default shell&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> chsh -s <span style=color:#e6db74>&#34;</span>$ZSH_PATH<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span>$TARGET_USER<span style=color:#e6db74>&#34;</span> 2&gt;/dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        ok <span style=color:#e6db74>&#34;Default shell changed to Zsh for </span><span style=color:#e6db74>${</span>TARGET_USER<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        warn <span style=color:#e6db74>&#34;Could not change shell automatically.&#34;</span>
+</span></span><span style=display:flex><span>        info <span style=color:#e6db74>&#34;Run manually:  chsh -s </span><span style=color:#e6db74>${</span>ZSH_PATH<span style=color:#e6db74>}</span><span style=color:#e6db74> </span><span style=color:#e6db74>${</span>TARGET_USER<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Step 10: Verify installation ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>step <span style=color:#e6db74>&#34;Verifying installation&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ERRORS<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>verify<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    local label<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span> path<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$2<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -e <span style=color:#e6db74>&#34;</span>$path<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        ok <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>label<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        warn <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>label<span style=color:#e6db74>}</span><span style=color:#e6db74> - NOT FOUND at </span><span style=color:#e6db74>${</span>path<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>        ERRORS<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span>ERRORS <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span><span style=color:#66d9ef>))</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>verify <span style=color:#e6db74>&#34;Oh My Zsh core&#34;</span>          <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>/oh-my-zsh.sh&#34;</span>
+</span></span><span style=display:flex><span>verify <span style=color:#e6db74>&#34;Powerlevel10k theme&#34;</span>     <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>/custom/themes/powerlevel10k/powerlevel10k.zsh-theme&#34;</span>
+</span></span><span style=display:flex><span>verify <span style=color:#e6db74>&#34;zsh-autosuggestions&#34;</span>     <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh&#34;</span>
+</span></span><span style=display:flex><span>verify <span style=color:#e6db74>&#34;zsh-syntax-highlighting&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&#34;</span>
+</span></span><span style=display:flex><span>verify <span style=color:#e6db74>&#34;zsh-completions&#34;</span>         <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>OMZ_DIR<span style=color:#e6db74>}</span><span style=color:#e6db74>/custom/plugins/zsh-completions/zsh-completions.plugin.zsh&#34;</span>
+</span></span><span style=display:flex><span>verify <span style=color:#e6db74>&#34;.zshrc&#34;</span>                  <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.zshrc&#34;</span>
+</span></span><span style=display:flex><span>verify <span style=color:#e6db74>&#34;.p10k.zsh&#34;</span>               <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TARGET_HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/.p10k.zsh&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $ERRORS -gt <span style=color:#ae81ff>0</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    warn <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>ERRORS<span style=color:#e6db74>}</span><span style=color:#e6db74> component(s) missing. Check the warnings above.&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    ok <span style=color:#e6db74>&#34;All components verified&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ── Done ──</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>G<span style=color:#e6db74>}</span><span style=color:#e6db74>╔══════════════════════════════════════════════╗</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>G<span style=color:#e6db74>}</span><span style=color:#e6db74>║</span><span style=color:#e6db74>${</span>W<span style=color:#e6db74>}</span><span style=color:#e6db74>            Installation complete!             </span><span style=color:#e6db74>${</span>G<span style=color:#e6db74>}</span><span style=color:#e6db74>║</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>G<span style=color:#e6db74>}</span><span style=color:#e6db74>╚══════════════════════════════════════════════╝</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>W<span style=color:#e6db74>}</span><span style=color:#e6db74>What was installed:</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;    </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>Shell:</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>   Zsh + Oh My Zsh&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;    </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>Theme:</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>   Powerlevel10k (pre-configured)&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;    </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>Plugins:</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> autosuggestions, syntax-highlighting, completions&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;    </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>Tools:</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>   eza, bat, fd, ripgrep, fzf&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;    </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>Font:</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>    JetBrains Mono Nerd Font&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;    </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>User:</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>    </span><span style=color:#e6db74>${</span>TARGET_USER<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>Y<span style=color:#e6db74>}</span><span style=color:#e6db74>IMPORTANT: You must configure your SSH client too!</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>W<span style=color:#e6db74>}</span><span style=color:#e6db74>1.</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> Install </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>JetBrains Mono Nerd Font</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> on your </span><span style=color:#e6db74>${</span>W<span style=color:#e6db74>}</span><span style=color:#e6db74>local machine</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;     Download: </span><span style=color:#e6db74>${</span>DIM<span style=color:#e6db74>}</span><span style=color:#e6db74>https://www.nerdfonts.com/font-downloads</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>W<span style=color:#e6db74>}</span><span style=color:#e6db74>2.</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> Set it as the font in your SSH client&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;     Font name: </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>JetBrainsMono Nerd Font</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> or </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>JetBrainsMono NF</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>W<span style=color:#e6db74>}</span><span style=color:#e6db74>3.</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> Log out and back in (or run </span><span style=color:#e6db74>${</span>C<span style=color:#e6db74>}</span><span style=color:#e6db74>zsh</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> to try it now)&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>DIM<span style=color:#e6db74>}</span><span style=color:#e6db74>Tip: If icons look broken, you need the font on your local machine.</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;  </span><span style=color:#e6db74>${</span>DIM<span style=color:#e6db74>}</span><span style=color:#e6db74>Tip: Run &#39;p10k configure&#39; to re-customize the prompt interactively.</span><span style=color:#e6db74>${</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;&#34;</span>
+</span></span></code></pre></div></details></div><div class=post-footer-line><span class=post-footer-brand><svg width="18" height="18" viewBox="0 0 1198 1200" fill="none" aria-hidden="true"><path d="M6e2 90C6e2 40.2944 559.483-.691048 510.335 6.73717 423.523 19.8582 340.267 51.9344 266.658 101.118 167.988 167.047 91.0849 260.754 45.6723 370.39.259702 480.026-11.6223 600.666 11.5288 717.054 34.68 833.443 91.8244 940.353 175.736 1024.26 259.647 1108.18 366.557 1165.32 482.946 1188.47 599.334 1211.62 719.974 1199.74 829.61 1154.33 939.246 1108.92 1032.95 1032.01 1098.88 933.342 1148.07 859.733 1180.14 776.477 1193.26 689.665 1200.69 640.517 1159.71 6e2 1110 6e2H990c-49.706.0-88.71 41.172-103.399 88.657C878.09 716.171 865.615 742.464 849.441 766.671 816.476 816.006 769.623 854.458 714.805 877.164c-54.818 22.706-115.138 28.647-173.332 17.072-58.194-11.576-111.649-40.148-153.605-82.104C345.912 770.176 317.34 716.721 305.764 658.527 294.189 600.333 300.13 540.013 322.836 485.195c22.706-54.818 61.158-101.671 110.493-134.636 24.207-16.174 50.5-28.649 78.014-37.16C558.828 298.71 6e2 259.706 6e2 210V90z" fill="var(--accent)"/><circle cx="900" cy="300" r="150" fill="var(--accent)"/></svg>
+Chatrix.One
+</span><time datetime=2026-06-06>Jun 06, 2026</time></div><section class=post-related><h2 class=post-related-title>More to read</h2><div class=post-related-grid><a href=/en/posts/monal-turorial/ class=post-related-card><div class=post-related-date>05/06/2026</div><div class=post-related-name>How to Install Monal on iPhone and Start Chatting on Chatrix.One</div><div class=post-related-excerpt>A step-by-step guide to installing Monal on iOS, creating a free Chatrix.One …</div></a><a href=/en/posts/dino-tutorial/ class=post-related-card><div class=post-related-date>27/05/2026</div><div class=post-related-name>How to Install Dino and Get Started with XMPP on Linux</div><div class=post-related-excerpt>A simple, step-by-step guide to installing the Dino XMPP chat client on Linux, …</div></a><a href=/en/posts/gajim-tutorial/ class=post-related-card><div class=post-related-date>26/05/2026</div><div class=post-related-name>How to Install Gajim and Get Started with XMPP on Linux</div><div class=post-related-excerpt>A simple, step-by-step guide to installing the Gajim XMPP chat client on Linux, …</div></a></div></section><nav class=post-nav aria-label="Post navigation"><div class=post-nav-inner><a href=/en/posts/monal-turorial/ class="post-nav-item post-nav-prev"><span class=post-nav-label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg>
+Older
+</span><span class=post-nav-title>How to Install Monal on iPhone and Start Chatting on Chatrix.One</span>
+</a><a href=/en/posts/xmpp-communication/ class="post-nav-item post-nav-next"><span class=post-nav-label>Newer
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+</span><span class=post-nav-title>XMPP - Communicate Freely!</span></a></div></nav></div></article></main><footer class=site-footer><div class=footer-inner><div class=footer-cols><div class="footer-col footer-col-brand"><a href=https://chatrix.one class=brand><span class=brand-mark aria-hidden=true><svg width="32" height="35" viewBox="0 0 1198 1200" fill="none"><path d="M6e2 90C6e2 40.2944 559.483-.691048 510.335 6.73717 423.523 19.8582 340.267 51.9344 266.658 101.118 167.988 167.047 91.0849 260.754 45.6723 370.39.259702 480.026-11.6223 600.666 11.5288 717.054 34.68 833.443 91.8244 940.353 175.736 1024.26 259.647 1108.18 366.557 1165.32 482.946 1188.47 599.334 1211.62 719.974 1199.74 829.61 1154.33 939.246 1108.92 1032.95 1032.01 1098.88 933.342 1148.07 859.733 1180.14 776.477 1193.26 689.665 1200.69 640.517 1159.71 6e2 1110 6e2H990c-49.706.0-88.71 41.172-103.399 88.657C878.09 716.171 865.615 742.464 849.441 766.671 816.476 816.006 769.623 854.458 714.805 877.164c-54.818 22.706-115.138 28.647-173.332 17.072-58.194-11.576-111.649-40.148-153.605-82.104C345.912 770.176 317.34 716.721 305.764 658.527 294.189 600.333 300.13 540.013 322.836 485.195c22.706-54.818 61.158-101.671 110.493-134.636 24.207-16.174 50.5-28.649 78.014-37.16C558.828 298.71 6e2 259.706 6e2 210V90z" fill="var(--accent)"/><circle cx="900" cy="300" r="150" fill="var(--accent)"/></svg>
+</span><span class=brand-wordmark>chatrix<span class=brand-dot>.</span>one</span></a><p class=footer-tagline>A free, decentralized, privacy-friendly XMPP service. Made with <svg style="display:inline;vertical-align:middle;margin:0 2px;position:relative;top:-1px" width="13" height="13" viewBox="0 0 24 24" fill="#00c896" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5.0 00-7.78.0L12 5.67l-1.06-1.06a5.5 5.5.0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5.0 000-7.78z"/></svg> in Sofia. Hosted in Switzerland.</p><div class=footer-badges><span class=footer-badge>DNSSEC · A</span>
+<span class=footer-badge>CRYPT · A+</span>
+<span class=footer-badge>XMPP · A</span>
+<span class=footer-badge>100% COMPLIANT</span></div></div><div class=footer-col><div class=footer-heading>LINKS</div><ul class=footer-links-list><li><a href=https://chatrix.one>Main site</a></li><li><a href=https://docs.chatrix.one/en target=_blank rel="noopener noreferrer">Documentation</a></li><li><a href=https://docs.chatrix.one/en/status/ target=_blank rel="noopener noreferrer">Status</a></li></ul></div><div class=footer-col><div class=footer-heading>CONTACT</div><ul class=contact-list><li class=contact-item><span class="contact-icon xmpp-icon" aria-hidden=true><img class=xmpp-icon-dark src=/images/xmpp-dark.png alt width=14 height=14>
+<img class=xmpp-icon-light src=/images/xmpp-light.png alt width=14 height=14>
+</span><a href=xmpp:admin@chatrix.one>admin@chatrix.one</a></li><li class=contact-item><svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+<a href=mailto:admin@chatrix.one>admin@chatrix.one</a></li><li class=contact-item><svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482.0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943.0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647.0.0.84-.269 2.75 1.025A9.578 9.578.0 0112 6.836a9.59 9.59.0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683.0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852.0 1.336-.012 2.415-.012 2.744.0.267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+<a href=https://github.com/ChatrixOne target=_blank rel="noopener noreferrer">GitHub</a></li></ul></div></div><div class=footer-bottom><span>&copy; 2018&ndash;2026 Chatrix.One &#183;
+Made with
+<svg class="footer-heart" width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5.0 00-7.78.0L12 5.67l-1.06-1.06a5.5 5.5.0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5.0 000-7.78z"/></svg>
+in
+<a href=https://en.wikipedia.org/wiki/Sofia class=footer-city target=_blank rel="noopener noreferrer">Sofia</a>.</span><div class=xmr-donate-wrap><span class=xmr-donate-trigger id=xmrTrigger tabindex=0 role=button aria-label="Donate with Monero">Donate with Monero</span><div class=xmr-donate-popup id=xmrPopup aria-hidden=true><div class=xmr-popup-inner><div class=xmr-popup-top-line></div><div class=xmr-qr-wrap><img src=/images/xmr-qr.png alt="Monero QR code" width=180 height=180 loading=lazy></div><div class=xmr-popup-label>Monero (XMR)</div><div class=xmr-popup-note>Anonymous. No fees. No third party.</div><div class=xmr-address-wrap><code class=xmr-address id=xmrAddress>49r9YTbTKNP1ekK8EffAhvVCxEGo9dZqDYtGccGLS1GZNYsK1Wy2AQxB7k1gGhRNuHTTsAf9A8gWYej9ConhkteA72fSmJD</code>
+<button type=button class=xmr-copy-btn id=xmrCopy aria-label="Copy address">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+<span id=xmrCopyLabel>Copy</span></button></div></div><div class=xmr-popup-arrow></div></div></div><span style="font-family:ibm plex mono,monospace;font-size:13px">v2.0 &#183; 2026 &#183;
+Updated:
+Jun 06, 2026</span></div></div></footer><script src=/js/blog.js></script><script type=module>
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script></body></html>
