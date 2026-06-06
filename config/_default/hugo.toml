@@ -31,4 +31,4 @@ defaultContentLanguageInSubdir = false
   tagline        = "Keep the Chatting, Skip the Tracking!"
 
 [outputs]
-  home = ["HTML", "JSON"]
+  home = ["HTML", "JSON", "RSS"]
