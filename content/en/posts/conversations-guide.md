@@ -2,7 +2,7 @@
 title:       "How to Install Conversations on Android"
 date:        2026-05-09
 description: "A step-by-step guide for complete beginners showing how to install the Conversations app and create a free account on Chatrix.One. Send your first encrypted message."
-image:       "/images/posts/Conversations.png"
+image:       "/images/posts/conversations-guide/Conversations.png"
 tags:        ["guide", "android", "conversations", "xmpp"]
 ---
 
@@ -23,7 +23,7 @@ F-Droid is a free app store for Android that contains only open source applicati
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/01.png" alt="F-Droid home screen" loading="lazy">
+      <img src="/images/posts/conversations-guide/01.png" alt="F-Droid home screen" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -45,7 +45,7 @@ Tap the **Search** tab at the bottom of the screen and type **Conversations**. T
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/02.png" alt="Search results showing the Conversations app" loading="lazy">
+      <img src="/images/posts/conversations-guide/02.png" alt="Search results showing the Conversations app" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -63,7 +63,7 @@ On the app page tap **Install**. Once the download finishes, the button changes 
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/03.png" alt="Conversations page in F-Droid with Open button" loading="lazy">
+      <img src="/images/posts/conversations-guide/03.png" alt="Conversations page in F-Droid with Open button" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -85,7 +85,7 @@ The first time you open Conversations you will see a welcome screen with a green
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/04.png" alt="Conversations welcome screen" loading="lazy">
+      <img src="/images/posts/conversations-guide/04.png" alt="Conversations welcome screen" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -106,7 +106,7 @@ You have two options:
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/05.png" alt="Choice between new account or existing one" loading="lazy">
+      <img src="/images/posts/conversations-guide/05.png" alt="Choice between new account or existing one" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -126,7 +126,7 @@ You have two options:
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/06.png" alt="Screen for adding an existing account" loading="lazy">
+      <img src="/images/posts/conversations-guide/06.png" alt="Screen for adding an existing account" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -148,7 +148,7 @@ Pick something you will be happy to share with others, as that is how people wil
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/07.jpg" alt="Screen for choosing a username" loading="lazy">
+      <img src="/images/posts/conversations-guide/07.jpg" alt="Screen for choosing a username" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -168,7 +168,7 @@ Tap the **Open website** button in the bottom right corner.
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/08.png" alt="Registration screen with Open website button" loading="lazy">
+      <img src="/images/posts/conversations-guide/08.png" alt="Registration screen with Open website button" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -186,7 +186,7 @@ Your browser will open the Chatrix.One registration page. You will see a simple 
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/09.png" alt="hCaptcha verification page" loading="lazy">
+      <img src="/images/posts/conversations-guide/09.png" alt="hCaptcha verification page" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -204,7 +204,7 @@ Once the tick turns green, tap the **Continue** button to move on to the registr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/10.png" alt="CAPTCHA solved, Continue button" loading="lazy">
+      <img src="/images/posts/conversations-guide/10.png" alt="CAPTCHA solved, Continue button" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -228,7 +228,7 @@ Done! Your account has been created. Go back to the Conversations app.
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/11.png" alt="Chatrix.One registration form" loading="lazy">
+      <img src="/images/posts/conversations-guide/11.png" alt="Chatrix.One registration form" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -256,7 +256,7 @@ You are now logged in, but the conversation list is empty. That is perfectly nor
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/12.png" alt="Main screen with Start chat button" loading="lazy">
+      <img src="/images/posts/conversations-guide/12.png" alt="Main screen with Start chat button" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -274,7 +274,7 @@ The New Chat screen opens on the contacts tab. Since you are a new user the list
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/13.png" alt="New chat screen with plus button" loading="lazy">
+      <img src="/images/posts/conversations-guide/13.png" alt="New chat screen with plus button" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -300,7 +300,7 @@ To add a contact for a private chat, tap **Add contact**.
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/14.png" alt="Menu with Add contact, Create group chat and other options" loading="lazy">
+      <img src="/images/posts/conversations-guide/14.png" alt="Menu with Add contact, Create group chat and other options" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -320,7 +320,7 @@ Tap **Add** when you are ready.
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/15.png" alt="Add contact dialog with XMPP address field" loading="lazy">
+      <img src="/images/posts/conversations-guide/15.png" alt="Add contact dialog with XMPP address field" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">

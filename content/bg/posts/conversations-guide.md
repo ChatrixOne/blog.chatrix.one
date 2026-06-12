@@ -23,7 +23,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/01.png" alt="Начален екран на F-Droid" loading="lazy">
+      <img src="/images/posts/conversations-guide/01.png" alt="Начален екран на F-Droid" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -45,7 +45,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/02.png" alt="Резултати от търсенето с приложението Conversations" loading="lazy">
+      <img src="/images/posts/conversations-guide/02.png" alt="Резултати от търсенето с приложението Conversations" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -63,7 +63,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/03.png" alt="Страница на Conversations в F-Droid с бутон Отвори" loading="lazy">
+      <img src="/images/posts/conversations-guide/03.png" alt="Страница на Conversations в F-Droid с бутон Отвори" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -85,7 +85,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/04.png" alt="Приветствен екран на Conversations" loading="lazy">
+      <img src="/images/posts/conversations-guide/04.png" alt="Приветствен екран на Conversations" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -106,7 +106,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/05.png" alt="Избор между нов профил или съществуващ" loading="lazy">
+      <img src="/images/posts/conversations-guide/05.png" alt="Избор между нов профил или съществуващ" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -126,7 +126,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/06.png" alt="Екран за добавяне на съществуващ профил" loading="lazy">
+      <img src="/images/posts/conversations-guide/06.png" alt="Екран за добавяне на съществуващ профил" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -148,7 +148,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/07.jpg" alt="Екран за избор на потребителско име" loading="lazy">
+      <img src="/images/posts/conversations-guide/07.jpg" alt="Екран за избор на потребителско име" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -168,7 +168,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/08.png" alt="Екран за регистрация с бутон Отвори уебсайт" loading="lazy">
+      <img src="/images/posts/conversations-guide/08.png" alt="Екран за регистрация с бутон Отвори уебсайт" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -186,7 +186,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/09.png" alt="Страница за потвърждение hCaptcha" loading="lazy">
+      <img src="/images/posts/conversations-guide/09.png" alt="Страница за потвърждение hCaptcha" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -204,7 +204,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/10.png" alt="CAPTCHA решена, бутон Continue" loading="lazy">
+      <img src="/images/posts/conversations-guide/10.png" alt="CAPTCHA решена, бутон Continue" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -228,7 +228,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/11.png" alt="Формуляр за регистрация в Chatrix.One" loading="lazy">
+      <img src="/images/posts/conversations-guide/11.png" alt="Формуляр за регистрация в Chatrix.One" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -256,7 +256,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/12.png" alt="Главен екран с бутон Start chat" loading="lazy">
+      <img src="/images/posts/conversations-guide/12.png" alt="Главен екран с бутон Start chat" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -274,7 +274,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/13.png" alt="Екран Нов чат с бутон плюс" loading="lazy">
+      <img src="/images/posts/conversations-guide/13.png" alt="Екран Нов чат с бутон плюс" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -300,7 +300,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/14.png" alt="Меню с Add contact, Create group chat и други опции" loading="lazy">
+      <img src="/images/posts/conversations-guide/14.png" alt="Меню с Add contact, Create group chat и други опции" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
@@ -320,7 +320,7 @@ F-Droid е безплатен магазин за приложения за Andr
 <div class="android-frame-wrap">
   <div class="android-frame">
     <div class="android-frame-screen">
-      <img src="/images/conversations-guide/15.png" alt="Диалог Add contact с поле за XMPP адрес" loading="lazy">
+      <img src="/images/posts/conversations-guide/15.png" alt="Диалог Add contact с поле за XMPP адрес" loading="lazy">
     </div>
   </div>
   <div class="android-frame-caption">
