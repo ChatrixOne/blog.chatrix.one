@@ -184,7 +184,7 @@ _Източник: Digital Content Next — Prof. Douglas C. Schmidt, Vanderbilt
 
 Имате опция за активиране на немодифицирана версия на **Google Play Services**. Така ще получите съвместимост с голяма част от услугите, разчитащи на **Google Services Framework**. Това, което отличава инсталацията, в сравнение със стандартните версии на **Android**, е че тук всички услуги на **Google** работят в изолирана среда. Инсталирани са като стандартни приложения, а не като системни. Именно поради тази причина, те не получават привилегирован достъпът до операционната система. Като краен резултат, ще имате възможност да премахнете всички ненужни права.
 
-![Google Play Store App Permissions](play-services-permissions.gif)
+![Google Play Store App Permissions](/images/posts/degoogle-our-life/play-services-permissions.gif)
 _Права, изисквани от Google Play Services, които при стандартна версия на Android **не** могат да бъдат ограничени. Примерът тук е от **GrapheneOS** инсталиран на **Google Pixel 7**. Освен достъп до Интернет, всички останали права са **забранени**._
 
 - [Уеб сайт](https://grapheneos.org/)
