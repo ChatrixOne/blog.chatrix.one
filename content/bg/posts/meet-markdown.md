@@ -302,7 +302,7 @@ ___
 
 ```
 
-![Хоризонтални линии](horizontal-lines.png)
+![Хоризонтални линии](/images/posts/meet_markdown/horizontal-lines.png)
 *Без значение кой вариант ще изберете, резултатът ще бъде един и същ*
 
 ## Бележки под чертата
@@ -326,7 +326,7 @@ Chatrix.One е сървър предлагащ комуникация, бази�
 
 ## Вграждане на код
 
-![Python Snippet](python-snippet.jpg)
+![Python Snippet](/images/posts/meet_markdown/python-snippet.jpg)
 *С цел правилно визуализиране, посоченият код е под формата на изображение.*
 
 ```python
