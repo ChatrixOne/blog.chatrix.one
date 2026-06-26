@@ -167,10 +167,10 @@ ___Жълтата дюля беше щастлива, че пухът, койт�
 ### От линк
 
 ```markdown
-![Remote-Location](https://blog.chatrix.one/assets/img/posts_images/chatrix/chatrix.one.jpg)
+![Remote-Location](https://blog.chatrix.one/images/posts/chatrix-logo.svg)
 ```
 
-![Remote-Location](https://blog.chatrix.one/assets/img/posts_images/chatrix/chatrix.one.jpg)
+![Remote-Location](https://blog.chatrix.one/images/posts/chatrix-logo.svg)
 *Изображението се зарежда и визуализира от посочения линк.*
 
 ### Локално

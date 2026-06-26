@@ -166,10 +166,10 @@ Subscript text
 ### From a URL
 
 ```markdown
-![Remote-Location](https://blog.chatrix.one/assets/img/posts_images/chatrix/chatrix.one.jpg)
+![Remote-Location](https://blog.chatrix.one/images/posts/chatrix-logo.svg)
 ```
 
-![Remote-Location](https://blog.chatrix.one/assets/img/posts_images/chatrix/chatrix.one.jpg)
+![Remote-Location](https://blog.chatrix.one/images/posts/chatrix-logo.svg)
 *The image is loaded and displayed from the given URL.*
 
 ### Local
