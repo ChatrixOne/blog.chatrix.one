@@ -1,7 +1,7 @@
 # Chatrix.One Blog
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ChatrixOne/blog.chatrix.one/main/static/images/posts/chatrix-logo-round.svg" alt="Chatrix.One" width="480">
+  <img src="https://raw.githubusercontent.com/ChatrixOne/blog.chatrix.one/main/static/images/posts/chatrix-logo-round.svg" alt="Chatrix.One" width="25%">
 </p>
 
 ## About Chatrix.One
